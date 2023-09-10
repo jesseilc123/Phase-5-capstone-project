@@ -4,7 +4,9 @@ WORKDIR /server
 
 COPY . .
 
-# RUN pipenv install
+RUN pip install
+
+# RUN pipenv shell
 
 EXPOSE 5555
 
