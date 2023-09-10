@@ -2,11 +2,12 @@ from config import db
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.orm import validates
 
-class Article(db.Model, SerializerMixin):
+class Pikmin(db.Model, SerializerMixin):
     __tablename__ = "pikmins"
 
     id = db.Column(db.Integer, primary_key=True)
 
+    name = db.Column(db.String, nullable=False)
     resistance = db.Column(db.String, nullable=False)
     attack = db.Column(db.Integer, nullable=False)
     speed = db.Column(db.String, nullable=False)
@@ -16,6 +17,7 @@ class Article(db.Model, SerializerMixin):
 
     def __repr__(self):
         return f"Article(id={self.id}, " + \
+            f"name={self.name}, " + \
             f"resistance={self.resistance}, " + \
             f"attack={self.attack}, " + \
             f"speed={self.speed}, " + \
