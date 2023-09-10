@@ -8,7 +8,7 @@ class Enemy(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
 
     name = db.Column(db.String, nullable=False)
-    location = db.Column(db.Integer, db.ForeignKey("locations.id"), nullable=False)
+    location = db.Column(db.Integer, db.ForeignKey("maps.id"), nullable=False)
     weight = db.Column(db.String, nullable=False)
     sparklium = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
