@@ -10,6 +10,10 @@ class Map(db.Model, SerializerMixin):
     name = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
 
+    enemies = db.relationship("Enemy", backref="map")
+    treasure = db.relationship("Treasure", backref="map")
+    characters = db.relationship("Character", backref="map")
+
     def __repr__(self):
         return f"Map(id={self.id}, " + \
             f"name={self.name}, " + \
