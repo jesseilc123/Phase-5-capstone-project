@@ -4,6 +4,8 @@ from sqlalchemy_serializer import SerializerMixin
 class Reply(db.Model, SerializerMixin):
     __tablename__ = 'replies'
 
+    serialize_rules = ('-post.replies', '-user.replies',)
+
     id = db.Column(db.Integer, primary_key=True)
 
     content = db.Column(db.String, nullable=False)
@@ -14,7 +16,7 @@ class Reply(db.Model, SerializerMixin):
     post_id = db.Column(db.Integer, db.ForeignKey("posts.id"), nullable=False)
 
     def __repr__(self):
-        return f"Comment(id={self.id}, " + \
+        return f"Reply(id={self.id}, " + \
             f"content={self.content}, " + \
             f"user_id={self.user_id}, " + \
-            f"article_id={self.article_id})"
+            f"post_id={self.post_id})"

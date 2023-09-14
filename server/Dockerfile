@@ -9,7 +9,10 @@ RUN pip install Flask-Bcrypt
 RUN pip install -U flask-cors
 RUN pip install Flask-RESTful
 RUN pip install Flask-Migrate
+RUN pip install Faker
+
 RUN cd /server
+RUN python seed.py
 
 EXPOSE 5555
 

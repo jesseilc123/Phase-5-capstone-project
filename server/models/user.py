@@ -5,13 +5,16 @@ from sqlalchemy.ext.hybrid import hybrid_property
 class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
 
+    serialize_rules = ('-replies.user', '-posts.user')
+
     id = db.Column(db.Integer, primary_key=True)
 
     username = db.Column(db.String, unique=True, nullable=False)
     email = db.Column(db.String, unique=True, nullable=False)
     _password_hash = db.Column(db.String)
 
-    comments = db.relationship('Comment', backref='user')
+    replies = db.relationship('Reply', backref='user')
+    posts = db.relationship('Post', backref='user')
 
     @hybrid_property
     def password_hash(self):
@@ -29,4 +32,5 @@ class User(db.Model, SerializerMixin):
 
     def __repr__(self):
         return f"User(id={self.id}, " + \
-            f"username={self.username})"
+            f"username={self.username})" + \
+            f"email={self.email})"
