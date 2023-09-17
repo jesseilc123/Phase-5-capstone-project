@@ -12,7 +12,6 @@ class Map(db.Model, SerializerMixin):
 
     enemies = db.relationship("Enemy", backref="map")
     treasure = db.relationship("Treasure", backref="map")
-    characters = db.relationship("Character", backref="map")
 
     def __repr__(self):
         return f"Map(id={self.id}, " + \

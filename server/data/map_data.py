@@ -1,0 +1,15 @@
+from models.map import Map
+
+rescue_command_post = Map(name="Rescue Command Post", description="The Rescue Command Post is the first area in Pikmin 4. It serves as a hub area for players. It is located in the crash landing site. The area allows the player to talk with rescued crew members and castaways for missions and upgrades")
+
+sun_speckled_terrace = Map(name="Sun-Speckled Terrace", description="The Sun-Speckled Terrace is an open area with many human-made objects. It appears to resemble a garden, with several gardening tools strewn about the place. There is a decent amount of water in the area, but not enough for many aquatic creatures to be abundant. Around the area, many Red Bulborbs and Dwarf Red Bulborbs can be found, and few enemies pose much of a threat.")
+
+blossoming_arcadia = Map(name="Blossoming Arcadia", description="Blossoming Arcadia seems to be a daycare, fearuring brightly coloured tyres, an elephant-themed slide and a sandpit. The area is on the edge of a forest filled with cherry blossom trees, and a lot of flowers can be found here as well. A house can be seen in the background. The area has a lot of structures that the player must build, and a small pond. Blue Pikmin and Rock Pikmin are both discovered here. Some enemies include Downy Snagrets, Creeping Chrysanthemums, and Swooping Snitchbugs.")
+
+serene_shores = Map(name="Serene Shores", description="Serene Shores seems to be a beach, with lots of tropical flowers, seaweed, rock-pools, and even a large sandcastle in the southern half of the area. There seems to be a lot of fish and coral, although there doesn't seem to be that many human remains aside from the sandcastle. Some of the enemies include Peckish Aristocrabs, Armored Cannon Larva, and Puckering Blinnows.")
+
+heros_hideaway = Map(name="Hero's Hideaway", description="The Hero's Hideaway is the fourth area in Pikmin 4, unlocked after getting 7000 sparklium. Before officially reaching this area, it serves as a tutorial on how to use your pup's abilities. Hero's Hideaway is located inside a abandoned house. despite its abandonment, its completely untouched and isn't broken. the house includes a living room and kitchen all to explore.")
+
+giants_hearth = Map(name="Giant's Hearth", description="The Giant's Hearth is the fifth area in Pikmin 4. It takes place just outside a camping site with a tent and fences visible in the background, and an extinguished brick fire pit and a wooden folding chair can be seen as prominent parts of the level. This area has treasure worth 5,200 Sparklium of which 1,760 Sparklium is above ground.")
+
+primordial_thicket = Map(name="Primordial Thicket", description="Primordial Thicket is the last area in Pikmin 4, unlocked after saving Don Bergman and Yorke, and having accumulated at least 13,000 sparklium. It has 89 treasures, three Dandori Challenges, and one Dandori Battle")
