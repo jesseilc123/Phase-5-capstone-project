@@ -9,8 +9,8 @@ class Enemy(db.Model, SerializerMixin):
 
     name = db.Column(db.String, nullable=False)
     location = db.Column(db.Integer, db.ForeignKey("maps.id"), nullable=False)
-    weight = db.Column(db.String, nullable=False)
-    sparklium = db.Column(db.String, nullable=False)
+    weight = db.Column(db.Integer, nullable=False)
+    sparklium = db.Column(db.Integer, nullable=False)
     description = db.Column(db.String, nullable=False)
 
     def __repr__(self):
