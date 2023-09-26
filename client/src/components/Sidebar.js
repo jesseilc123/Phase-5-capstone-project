@@ -7,7 +7,7 @@ function Sidebar( { cat }) {
         <div className={`fixed flex h-full bg-n-green ${active ? "w-48" : "w-12"}`}>
             {active ? (
                 <>
-                    <div className="flex flex-col mt-[90px]">
+                    <div className="flex flex-col">
                         <div className="text-black">
                             Walkthrough Menu
                         </div>

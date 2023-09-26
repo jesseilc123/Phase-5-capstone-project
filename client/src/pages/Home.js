@@ -1,25 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import GuideCard from "../components/GuideCard";
 
 function Home( { cat }) {
-    const [pikmin, setPikmin] = useState([])
-
-    useEffect(() => {
-        fetch("/pikmins")
-          .then((r) => r.json())
-          .then(setPikmin)
-      }, []);
 
     return (
-        <div className="flex mt-[90px] ml-12 h-full w-full bg-hero-pattern bg-no-repeat bg-scroll bg-grey items-center justify-center">
-            <div className="flex flex-col items-center">
+        <div className="flex h-full w-full bg-hero-pattern bg-no-repeat bg-scroll bg-grey items-center justify-center">
+            <div className="flex flex-col items-center w-3/5">
                 <div className="flex w-fit h-full text-8xl items-center justify-center bg-light-blue">
                     Welcome to the Pikmin 4 Wiki!
                 </div>
                 <div>
-                    <p2>
+                    <h2>
                         General Announcements 
-                    </p2>
+                    </h2>
                     <ul>
                         <li>
                             <h1>Welcome Pikmin Enthusiasts!</h1>
@@ -47,10 +40,10 @@ function Home( { cat }) {
                         </li>
                     </ul>
                 </div>
-                <div className="flex flex-row flex-wrap h-full w-full items-center justify-center">
+                <div className="flex flex-row flex-wrap h-full w-full items-center justify-evenly">
                     {cat.map((c) => (
                         <GuideCard 
-                            key={c}
+                            key={c.category}
                             cat={c}
                         />
                     ))}

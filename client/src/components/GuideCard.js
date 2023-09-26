@@ -1,11 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function GuideCard( { cat }) {
     return (
-        <div key={cat} className="h-[500px] w-[500px] grid border-black border-2 mt-3 p-2 rounded-xl mx-2 bg-gray-400 shadow-md">
-            <div>{cat.category}</div>
-            <img src={cat.image}/>
-        </div> 
+        <Link to={`/${cat.category.toLowerCase()}`}>
+            <button key={cat} className="h-[450px] w-[400px] grid border-black bg-light-cyan border-2 mt-3 p-2 rounded-xl bg-gray-400 shadow-md justify-center">
+                <div className="text-2xl items-center justify-center border-black">
+                    {cat.category}
+                </div>
+                    <img className="rounded-xl"src={cat.image} alt={`${cat.category}`}/>
+            </button>
+        </Link>
     );
 };
 
