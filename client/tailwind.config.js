@@ -11,15 +11,20 @@ module.exports = {
     colors: {
       'white': '#FFFFFF',
       'light-green': '#E5F0CF',
-      "n-green": "#CEE6BD",
+      'n-green': '#CEE6BD',
       'yellow': '#EBEB15',
       'beige': '#F2F3DB',
       'grey': '#292929',
       'light-blue': '#3951C6',
       'blue': '#34459B',
       'dark-blue': '#314091',
-      'light-cyan': "#43BAE0",
-      'cyan': "#024766",
+      'light-cyan': '#43BAE0',
+      'cyan': '#024766',
+      'facebook': '#1877F2',
+      'google': '#4285F4',
+      'twitch': '#9146FF',
+      'apple': '#000000',
+      'off-white': '#F5F3F5',
     },
     extend: {
       backgroundImage: {
