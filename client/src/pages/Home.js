@@ -7,10 +7,10 @@ function Home() {
     const { cat } = useContext(UserContext)
 
     return (
-        <div className="flex h-full w-full bg-hero-pattern bg-no-repeat bg-cover bg-grey items-center justify-center">
-            <div className="flex flex-col mt-24 lg:ml-12 mb-20 max-w-7xl">
-                <div className="flex flex-wrap text-center justify-center bg-light-blue">
-                    <p className="flow-text break-words text-white lg:text-8xl text-4xl">
+        <div className="flex h-full w-full bg-hero-pattern bg-no-repeat bg-grey items-center justify-center">
+            <div className="flex flex-col mt-24 xl:ml-12 mb-[70px] max-w-7xl">
+                <div className="flex text-center justify-center border-black border-t-2 border-x-2 xl:border-b-2 bg-light-blue w-auto h-auto xl:mt-3 xl:rounded-md">
+                    <p className="flex break-words text-white md:text-8xl text-4xl flex-wrap">
                         Welcome to the Pikmin 4 Wiki! 
                     </p>
                 </div>

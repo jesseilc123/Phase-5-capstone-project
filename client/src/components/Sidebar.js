@@ -7,7 +7,7 @@ function Sidebar() {
     const { cat, activeSidebar, setActiveSidebar } = useContext(UserContext)
 
     return (
-        <div className={`fixed h-full mt-24 bg-n-green lg:flex hidden ${activeSidebar ? "w-48" : "w-12"} ${location.pathname==="/login" ? "hidden" : "flex"}`}>
+        <div className={`fixed h-full mt-24 bg-n-green xl:flex hidden ${activeSidebar ? "w-48" : "w-12"} ${location.pathname==="/login" ? "xl:hidden" : "flex"}`}>
             {activeSidebar ? (
                 <>
                     <div className="flex flex-col">

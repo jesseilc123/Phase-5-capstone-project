@@ -14,4 +14,4 @@ class Pikmins(Resource):
 
         return list, 200
     
-api.add_resource(Pikmins, "/pikmins")
+api.add_resource(Pikmins, "/pikmins", endpoint="pikmins")

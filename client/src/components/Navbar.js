@@ -12,19 +12,9 @@ function Navbar() {
         <div className={`fixed top-0 flex-row z-[100] h-24 w-full bg-grey ${location.pathname==="/login" ? "hidden" : "flex"}`}>
             < div className="flex flex-row h-full w-full items-center justify-between">
                 <Link to="/" className="flex ml-3 text-white justify-start">
-                    <p className="flex mr-3 lg:text-4xl text-2xl items-center">Pikmin Wiki</p>
+                    <p className="hidden mr-3 lg:text-4xl sm:text-2xl sm:flex items-center">Pikmin Wiki</p>
                     <img src={pikminlogo} alt="Pikmin flower" className="object-scale-down lg:h-10 lg:w-10 h-9 w-9"/>
                 </Link>
-                <div className="justify-end lg:flex hidden">
-                    <form className="flex items-center">
-                        <input 
-                            className="pl-3 border-2 border-black rounded-lg bg-gray-500 text-white text-2xl leading-tight focus:outline-none focus:border-n-green focus:shadow-outline" 
-                            placeholder="Search..."
-                            onChange={(e) => console.log(e.target.value)}
-                            value={""}
-                        />
-                    </form>
-                </div>
             </div>
             <div className="flex w-full items-center justify-end">
             <svg 

@@ -25,21 +25,21 @@ function LoginForm() {
     }   
 
     return (
-        <div className="flex flex-wrap items-center justify-evenly flex-row lg:h-[750px] h-full w-1/2 mt-8">
-            <div className="flex flex-wrap flex-col lg:w-1/2 w-1/2">
-                <h2 className="flex font-bold text-xl justify-center items-center">Sign in with a Social Account</h2>
-                <div className="flex flex-col gap-4 mt-4">
+        <div className="flex lg:flex-nowrap flex-wrap justify-center flex-row mt-8 gap-4 mx-12">
+            <div className="flex flex-col lg:w-1/2 w-full">
+                <h2 className=" font-bold text-xl justify-center items-center lg:flex hidden">Sign in with a Social Account</h2>
+                <div className="flex justify-center items-center flex-col gap-4 xl:mt-4 w-full">
                     {social.map((s) => (
-                        <button key={s.platform} className={`flex flex-row items-center h-full w-full font-semibold p-2 rounded-md ${s.color}`}>
-                            <img src={s.image} className="flex justify-start h-10 w-10 p-1 bg-white rounded-lg"/>
-                            <div className="flex items-center text-white text-sm ">
+                        <button key={s.platform} className={`flex flex-row items-center h-full w-full p-1 rounded-md ${s.color}`}>
+                            <img src={s.image} className="flex justify-start h-7 w-7 p-0.5 m-1 bg-white rounded-sm"/>
+                            <div className="flex justify-center text-white text-xs font-semibold">
                                 {s.platform} 
                             </div>
                         </button>
                     ))}
                 </div>
             </div>
-            <div className="flex flex-col flex-wrap">
+            <div className="flex flex-col lg:w-1/2 w-full">
                 <p className="flex font-bold text-xl justify-center">Sign in with Email</p>
                 <form autoComplete="off" onSubmit={handleSubmit} className="flex flex-col mt-4 h-full w-full">
                     <input 
@@ -62,7 +62,12 @@ function LoginForm() {
                     <button type="submit" className="flex w-full h-full text-xl items-center justify-center font-bold border-black border-2  rounded-lg bg-blue text-white hover:bg-light-blue">
                         Login
                     </button>
-                    <p>By creating an account, you agree to&nbsp;<button className="text-light-cyan underline font-bold">Terms of Use</button> and <button className="text-light-cyan underline font-bold">Privacy Policy</button></p>
+                    <div className="flex items-center justify-center">
+                        <p>By creating an account, you agree to&nbsp;
+                            <button className="text-light-cyan underline font-bold">Terms of Use</button> and 
+                            <button className="text-light-cyan underline font-bold">Privacy Policy</button>
+                        </p>
+                    </div>
                 </form>
             </div>
         </div>
