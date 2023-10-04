@@ -1,7 +1,7 @@
 import React, { useState} from "react";
 
 function Announcements() {
-    const [announceHidden, setAnnounceHidden] = useState(false);
+    const [announceHidden, setAnnounceHidden] = useState(true);
 
     return (
         <div className={`flex flex-col bg-off-white border-black p-4 border-2 xl:mt-3 xl:rounded-md rounded-b-sm ${ announceHidden ? "content-none h-14" : "visible h-full"} `}>

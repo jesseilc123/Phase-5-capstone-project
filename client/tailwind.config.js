@@ -29,6 +29,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         'hero-pattern': "url('/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/pikmin_exploration.jpg')",
+        'hero-pattern-2': "url('/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/pikmin_flower.png')",
       }
     },
   },
