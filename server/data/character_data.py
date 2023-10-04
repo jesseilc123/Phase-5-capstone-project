@@ -18,7 +18,7 @@ yonny = Character(name="Yonny", planet="Ohri", title="Rescue Corps Officer", des
 
 bernard = Character(name="Bernard", planet="Nijo", title="Rescue Corps Officer", description="A veteran pilot who started in the private sector before joining the Rescue Corps. He's always brimming with optimism.")
 
-schnauz = Character(name="schnauz", planet="Siguray", title="Treasure Appraiser", description="An acclaimed treasure appraiser who's traveled extensively. His unique techniques were used to develop a leading appraisal AI.")
+schnauz = Character(name="Schnauz", planet="Siguray", title="Treasure Appraiser", description="An acclaimed treasure appraiser who's traveled extensively. His unique techniques were used to develop a leading appraisal AI.")
 
 dalmo = Character(name="Dalmo", planet="Sozor", title="Animal Enthusiast", description="He loves animals and they love him. A researcher at heart, his passion for other creatures is as genuine as him smile.")
 
@@ -30,7 +30,7 @@ pitunia = Character(name="Pitunia", planet="Ogura", title="Research Task Force R
 
 puddle = Character(name="Puddle", planet="Enohay", title="Universal Stylist", description="A stylist with clients all over the universe. Just say the word, and he'll unleash his fashionable skills at lightning speed.")
 
-mika = Character(name="Puddle", planet="Neechki", title="Uncharted Planet Tourist", description="A new teacher at Alayon Academy who's putting her liberal-arts degree to good use as adviser to the Planetary Science Club.")
+mika = Character(name="Mika", planet="Neechki", title="Uncharted Planet Tourist", description="A new teacher at Alayon Academy who's putting her liberal-arts degree to good use as adviser to the Planetary Science Club.")
 
 sy = Character(name="Sy", planet="Ogura", title="Research Task Force Recruit", description="This environmental ecologist joined the team to research Pikmin ecology and decipher their mysterious relationship to whistles.")
 

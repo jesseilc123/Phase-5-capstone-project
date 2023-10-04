@@ -99,7 +99,7 @@ if __name__ == '__main__':
         # Maps
         maps = []
         print("    Seeding Maps...")
-        map_list = [rescue_command_post, sun_speckled_terrace, blossoming_arcadia, serene_shores, heros_hideaway, giants_hearth, primordial_thicket]
+        map_list = [sun_speckled_terrace, blossoming_arcadia, serene_shores, heros_hideaway, giants_hearth, primordial_thicket]
         for i in map_list:
             db.session.add(i)
             db.session.commit()

@@ -1,7 +1,5 @@
 from models.map import Map
 
-rescue_command_post = Map(name="Rescue Command Post", description="The Rescue Command Post is the first area in Pikmin 4. It serves as a hub area for players. It is located in the crash landing site. The area allows the player to talk with rescued crew members and castaways for missions and upgrades")
-
 sun_speckled_terrace = Map(name="Sun-Speckled Terrace", description="The Sun-Speckled Terrace is an open area with many human-made objects. It appears to resemble a garden, with several gardening tools strewn about the place. There is a decent amount of water in the area, but not enough for many aquatic creatures to be abundant. Around the area, many Red Bulborbs and Dwarf Red Bulborbs can be found, and few enemies pose much of a threat.")
 
 blossoming_arcadia = Map(name="Blossoming Arcadia", description="Blossoming Arcadia seems to be a daycare, fearuring brightly coloured tyres, an elephant-themed slide and a sandpit. The area is on the edge of a forest filled with cherry blossom trees, and a lot of flowers can be found here as well. A house can be seen in the background. The area has a lot of structures that the player must build, and a small pond. Blue Pikmin and Rock Pikmin are both discovered here. Some enemies include Downy Snagrets, Creeping Chrysanthemums, and Swooping Snitchbugs.")
