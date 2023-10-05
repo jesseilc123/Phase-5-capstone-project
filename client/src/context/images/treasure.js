@@ -1,0 +1,25 @@
+const treasureIcons = [
+    {name: "Beckoning Mannequin", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/treasure_images/beckoning_mannequin.png")},
+    {name: "Buddy Display", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/treasure_images/buddy_display.png")},
+    {name: "Giant's Fossil", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/treasure_images/giants_fossil.png")},
+    {name: "Lamp of Inspiration", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/treasure_images/lamp_of_inspiration.png")},
+    {name: "Persistence Machine", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/treasure_images/persistence_machine.png")},
+    {name: "Crunchy Deluge", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/treasure_images/crunchy_deluge.png")},
+    {name: "Delectable Bouquet", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/treasure_images/delectable_bouquet.png")},
+    {name: "Portable Sunset", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/treasure_images/portable_sunset.png")},
+    {name: "Tremendous Sniffer", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/treasure_images/tremendous_sniffer.png")},
+    {name: "Zest Bomb", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/treasure_images/zest_bomb.png")},
+    {name: "Birdy Bed", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/treasure_images/birdy_bed.png")},
+    {name: "Golden Vaulting Table", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/treasure_images/golden_vaulting_table.png")},
+    {name: "Princess Pearl", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/treasure_images/princess_pearl.png")},
+    {name: "Sticky Jewel", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/treasure_images/sticky_jewel.png")},
+    {name: "Unbreakable Promise", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/treasure_images/unbreakable_promise.png")},
+    {name: "Aspiration-Ritual Ball", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/treasure_images/aspiration_ritual_ball.png")},
+    {name: "Divine Balloon", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/treasure_images/divine_balloon.png")},
+    {name: "Faux Fishy", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/treasure_images/faux_fishy.png")},
+    {name: "Priceless Bird", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/treasure_images/priceless_bird.png")},
+    {name: "Sweat-Soaked Blue Bird", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/treasure_images/sweat_soaked_blue_bird.png")},
+    {name: "Unfloatable Boat", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/treasure_images/unfloatable_boat.png")},
+]
+
+export default treasureIcons;

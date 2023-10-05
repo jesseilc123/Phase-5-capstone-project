@@ -1,7 +1,9 @@
 import { createContext, useState } from "react";
 import pikminIcons from "./images/pikmin"
 import characterIcons from "./images/character";
-import mapIcons from "./images/map";
+import  mapIcons from "./images/map";
+import enemyIcons from "./images/enemy"
+import treasureIcons from "./images/treasure";
 
 const UserContext = createContext({});
 
@@ -14,10 +16,12 @@ const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [view, setView] = useState("login");
 
+    const [maps, setMaps] = useState([]);
+
     return (
         <UserContext.Provider 
             value={
-                { cat, activeSidebar, setActiveSidebar, user, setUser, view, setView, social, pikminIcons, characterIcons, mapIcons}
+                { cat, activeSidebar, setActiveSidebar, user, setUser, view, setView, social, pikminIcons, characterIcons, maps, setMaps, mapIcons, enemyIcons, treasureIcons}
             }
         >
             { children }

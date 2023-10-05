@@ -1,0 +1,28 @@
+const enemyIcons = [
+    {name: "Empress Bulblax", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/enemy_images/empress_bulblax.png")},
+    {name: "Emperor Bulblax", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/enemy_images/emperor_bulblax.png")},
+    {name: "Sovereign Bulblax", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/enemy_images/sovereign_bulblax.png")},
+    {name: "Horned Cannon Beetle", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/enemy_images/horned_cannon_beetle.png")},
+    {name: "Arctic Cannon Beetle", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/enemy_images/arctic_cannon_beetle.png")},
+    {name: "Man-at-Legs", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/enemy_images/man_at_legs.png")},
+    {name: "Groovy Long Legs", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/enemy_images/groovy_long_legs.png")},
+    {name: "Snowfake Fluttertail", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/enemy_images/snowfake_fluttertail.png")},
+    {name: "Giant Breadbug", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/enemy_images/giant_breadbug.png")},
+    {name: "Gildemander", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/enemy_images/gildemander.png")},
+    {name: "Mammoth Snootwhacker", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/enemy_images/mammoth_snootwhacker.png")},
+    {name: "Foolix", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/enemy_images/foolix.png")},
+    {name: "Burrowing Snagret", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/enemy_images/burrowing_snagret.png")},
+    {name: "Puffstool", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/enemy_images/puffstool.png")},
+    {name: "Toxstool", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/enemy_images/toxstool.png")},
+    {name: "Porquillion", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/enemy_images/porquillion.png")},
+    {name: "Puffy Blowhog", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/enemy_images/puffy_blowhog.png")},
+    {name: "Masterhop", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/enemy_images/masterhop.png")},
+    {name: "Bug-Eyed Crawmad", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/enemy_images/bug_eyed_crawmad.png")},
+    {name: "Crusted Rumpup", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/enemy_images/crusted_rumpup.png")},
+    {name: "Bloomcap Bloyster", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/enemy_images/bloomcap_bloyster.png")},
+    {name: "Waterwraith", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/enemy_images/waterwraith.png")},
+    {name: "Smoky Progg", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/enemy_images/smoky_progg.png")},
+    {name: "Ancient Sirehound", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/enemy_images/ancient_sirehound.png")},
+]
+
+export default enemyIcons;

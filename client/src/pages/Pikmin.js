@@ -28,7 +28,7 @@ function Pikmin() {
     return (
         <div className="flex h-full w-full bg-beige bg-hero-pattern-2 items-center justify-center ">
             <div className="flex flex-col mt-24 xl:ml-12 lg:mb-[70px] max-w-7xl">
-                <div className="flex flex-wrap items-center justify-center bg-n-green lg:w-[1000px] lg:h-[1050px] h-full w-full lg:mt-12 pb-8 lg:pb-0  lg:rounded-t-lg">
+                <div className="flex flex-wrap items-center justify-center bg-n-green lg:w-[1000px] lg:min-h-[700px] h-full w-full lg:mt-12 pb-8 lg:pb-0  lg:rounded-t-lg">
                     <div>
                         {currentPikmin === null ? (
                             <>
@@ -71,7 +71,7 @@ function Pikmin() {
                                         </p>
                                     </div>
                                 </div>
-                                <div className="flex flex-col md:h-[600px] h-fit mt-8 lg:mx-12 mx-4 border-[3px] rounded-lg">
+                                <div className="flex flex-col h-fit mt-8 lg:mx-12 mx-4 mb-6 border-[3px] rounded-lg">
                                     <h2 className="flex text-2xl font-bold items-center justify-center border-b-[3px] bg-beige rounded-t-md">Description</h2>
                                     <p className="text-lg font-medium tracking-wide p-2">{currentPikmin.description}</p>
                                 </div>

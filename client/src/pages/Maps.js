@@ -2,12 +2,12 @@ import React, { useState, useEffect, useContext} from "react";
 import { UserContext } from "../context/UserContext";
 
 function Maps() {
-    const { mapIcons } = useContext(UserContext)
+    const { maps, setMaps, mapIcons } = useContext(UserContext)
     const [currentMap, setCurrentMap] = useState(null)
     const [currentImage, setCurrentImage] = useState(null)
     const [search, setSearch] = useState("")
 
-    const [maps, setMaps] = useState([])
+    
     useEffect(() => {
         fetch("http://localhost:5555/maps") 
             .then((r) => r.json())
@@ -49,7 +49,7 @@ function Maps() {
                                         <p className="text-4xl font-bold mt-4">{currentMap.name}</p>
                                     </div>
                                 </div>
-                                <div className="flex flex-col  h-fit mt-8 lg:mx-12 mx-4 border-[3px] rounded-lg">
+                                <div className="flex flex-col h-fit mt-8 lg:mx-12 mx-4 border-[3px] rounded-lg">
                                     <h2 className="flex text-2xl font-bold items-center justify-center border-b-[3px] bg-beige rounded-t-md">Description</h2>
                                     <p className="text-lg font-medium tracking-wide p-2">{currentMap.description}</p>
                                 </div>

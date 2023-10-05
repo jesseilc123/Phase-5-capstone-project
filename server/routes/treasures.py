@@ -9,7 +9,7 @@ class Treasures(Resource):
         list = []
 
         for treasure in Treasure.query.all():
-            tre_obj = Treasure.to_dict()
+            tre_obj = treasure.to_dict()
             list.append(tre_obj)
 
         return list, 200
