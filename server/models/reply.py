@@ -4,7 +4,7 @@ from sqlalchemy_serializer import SerializerMixin
 class Reply(db.Model, SerializerMixin):
     __tablename__ = 'replies'
 
-    serialize_rules = ('-post.replies', '-user.replies',)
+    serialize_rules = ('-user', '-post')
 
     id = db.Column(db.Integer, primary_key=True)
 

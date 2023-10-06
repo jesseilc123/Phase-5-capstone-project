@@ -1,14 +1,17 @@
 import React, { useState, useEffect, useContext} from "react";
 import { UserContext } from "../context/UserContext";
+import { Link } from "react-router-dom";
+import IconCard from "../components/IconCard";
 
 function Enemies() {
-    const { maps, setMaps, enemyIcons } = useContext(UserContext)
+    const { maps, setMaps, setCurrentMap, setCurrentImageMap, enemyIcons, mapIcons } = useContext(UserContext)
     const [currentEnemy, setCurrentEnemy] = useState(null)
     const [currentImage, setCurrentImage] = useState(null)
-    const [search, setSearch] = useState("")
+
 
     const [enemies, setEnemies] = useState([]);
     useEffect(() => {
+        window.scroll(0, 0)
         fetch("http://localhost:5555/enemies") 
             .then((r) => r.json())
             .then(data => {
@@ -20,27 +23,24 @@ function Enemies() {
             .then(data => {
                 setMaps(data)
             })
-    }, []);
+    }, [setMaps]);
 
-    function handleClick(item){
-        enemies.filter(enemy => {
-            if (enemy.name === item.name) {
-                setCurrentEnemy(enemy)
-                setCurrentImage(item.image)
-            }
-            return window.scroll(0, 0)
-        });
+    function linkToMaps() {
+        const m = maps.filter(map => map.id === currentEnemy.location)
+        const i = mapIcons.filter(map => map.name === m[0].name)
+        setCurrentMap(m[0])
+        setCurrentImageMap(i[0].image)
     };
 
     return (
         <div className="flex h-full w-full bg-beige bg-hero-pattern-2 bg-repeat items-center justify-center ">
-            <div className="flex flex-col mt-24 xl:ml-12 lg:mb-[70px] max-w-7xl">
-                <div className="flex flex-wrap items-center justify-center bg-n-green lg:w-[1000px] lg:h-[700px] h-full w-full lg:mt-12 pb-8 lg:pb-0  lg:rounded-t-lg">
+            <div className="flex flex-col mt-24 xl:ml-12 lg:mb-[70px] max-w-7xl w-full items-center justify-center">
+                <div className="flex flex-wrap items-center justify-center bg-n-green lg:w-[1000px] h-[300px] lg:h-[700px] w-full lg:mt-12 pb-8 lg:pb-0  lg:rounded-t-lg">
                     <div>
                         {currentEnemy === null ? (
                             <>
-                                <div className="flex flex-col item-center lg:pt-0 p-12 mt-8">
-                                    <p className="flex item-center justify-center font-bold text-2xl">No Character Selected!</p>
+                                <div className="flex flex-col item-center lg:pt-0 p-12 mt-8 h-full w-full">
+                                    <p className="flex item-center justify-center font-bold text-2xl ">No Enemy Selected!</p>
                                     <div className="flex flex-row flex-wrap item-center justify-center">
                                         <p className="flex font-bold text-2xl">Select a Character</p>
                                         <p className="flex font-bold text-2xl">for more information</p>
@@ -70,7 +70,7 @@ function Enemies() {
                                         </p>
                                         <p className="text-lg font-semibold ml-1" >
                                             <span className="bg-beige rounded-xl pb-1 px-2">location:</span>
-                                            <span> {maps.filter(map => map.id === currentEnemy.location).map(name => name.name)}</span>
+                                            <Link to="/maps" onClick={() => linkToMaps()}> {maps.filter(map => map.id === currentEnemy.location).map(name => name.name)}</Link>
                                         </p>
                                     </div>
                                 </div>
@@ -83,43 +83,12 @@ function Enemies() {
                         }
                     </div>
                 </div>
-                <div className="flex flex-col bg-grey py-10 lg:w-[1000px] w-full lg:rounded-b-lg min-h-[480px]">
-                    <form className="flex items-center justify-center p-3">
-                        <div className="flex flex-row items-center justify-between h-full xs:w-3/5 w-5/6 mb-8 bg-beige rounded-xl focus:outline-2 focus:outline-n-green">
-                            <input 
-                                className="text-xl outline-none bg-beige p-2 rounded-xl w-full" 
-                                placeholder="Search by Name"
-                                onChange={(e) => setSearch(e.target.value)}
-                                value={search}
-                            />
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 mr-2 hover:text-[#808080]">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 hover:text-[#ff0000] mr-2" onClick={() => setSearch("")}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </div>
-                    </form>
-                    <div className="flex flex-row items-center justify-center flex-wrap gap-5">
-                        {enemyIcons.filter(item => {
-                            if (search === "") {
-                                return item
-                            }
-                            if (item.name.toLowerCase().includes(search.toLowerCase())){
-                                return item
-                            }
-                        }).map((item) => (
-                            <button 
-                                key={item.name} 
-                                className={`flex flex-col h-[300px] w-[300px] bg-light-cyan items-center justify-center rounded-sm hover:border-n-green hover:border-4 focus:border-n-green focus:border-4 focus:scale-90`}
-                                onClick={() => handleClick(item)}
-                            >
-                                <img src={item.image} alt={item.name} className="h-48 w-48 rounded-xl"/>
-                                <p className="font-bold text-2xl mt-4">{item.name}</p>
-                            </button>
-                        ))}
-                    </div>
-                </div>
+                <IconCard 
+                    icon={enemyIcons} 
+                    states={enemies} 
+                    setCurrentState={setCurrentEnemy} 
+                    setCurrentImage={setCurrentImage}
+                />
             </div>
         </div>
     );

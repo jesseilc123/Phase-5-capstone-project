@@ -5,7 +5,7 @@ from sqlalchemy.orm import validates
 class Post(db.Model, SerializerMixin):
     __tablename__ = 'posts'
 
-    serialize_rules = ('-replies.posts', "user.posts")
+    serialize_rules = ( '-user', '-post.replies')
 
     id = db.Column(db.Integer, primary_key=True)
 

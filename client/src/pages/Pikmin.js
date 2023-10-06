@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext} from "react";
 import { UserContext } from "../context/UserContext";
+import IconCard from "../components/IconCard";
 
 function Pikmin() {
     const { pikminIcons } = useContext(UserContext);
@@ -8,6 +9,7 @@ function Pikmin() {
 
     const [pikmins, setPikmins] = useState([])
     useEffect(() => {
+        window.scroll(0, 0)
         fetch("http://localhost:5555/pikmins") 
             .then((r) => r.json())
             .then(data => {
@@ -15,20 +17,12 @@ function Pikmin() {
             })
     }, []);
 
-    function handleClick(item){
-        pikmins.filter(pikmin => {
-            if (pikmin.name === item.name) {
-                setCurrentPikmin(pikmin)
-                setCurrentImage(item.image)
-            }
-            return window.scroll(0, 0)
-        });
-    };
+
 
     return (
         <div className="flex h-full w-full bg-beige bg-hero-pattern-2 items-center justify-center ">
-            <div className="flex flex-col mt-24 xl:ml-12 lg:mb-[70px] max-w-7xl">
-                <div className="flex flex-wrap items-center justify-center bg-n-green lg:w-[1000px] lg:min-h-[700px] h-full w-full lg:mt-12 pb-8 lg:pb-0  lg:rounded-t-lg">
+            <div className="flex flex-col mt-24 xl:ml-12 lg:mb-[70px] max-w-7xl w-full items-center justify-center">
+                <div className="flex flex-wrap items-center justify-center bg-n-green lg:w-[1000px] h-[300px] lg:min-h-[700px] lg:h-full w-full lg:mt-12 pb-8 lg:pb-0  lg:rounded-t-lg">
                     <div>
                         {currentPikmin === null ? (
                             <>
@@ -80,20 +74,12 @@ function Pikmin() {
                         }
                     </div>
                 </div>
-                <div className="flex bg-grey py-10 lg:w-[1000px] w-full lg:rounded-b-lg">
-                    <div className="flex flex-row items-center justify-center flex-wrap gap-5">
-                        {pikminIcons.map((item) => (
-                            <button 
-                                key={item.name} 
-                                className={`flex flex-col h-[300px] w-[300px] bg-light-cyan items-center justify-center rounded-sm hover:border-n-green hover:border-4 focus:border-n-green focus:border-4 focus:scale-90`}
-                                onClick={() => handleClick(item)}
-                            >
-                                <img src={item.image} alt={item.name} className="h-48 w-48 rounded-xl"/>
-                                <p className="font-bold text-2xl mt-4">{item.name}</p>
-                            </button>
-                        ))}
-                    </div>
-                </div>
+                <IconCard 
+                    icon={pikminIcons} 
+                    states={pikmins} 
+                    setCurrentState={setCurrentPikmin} 
+                    setCurrentImage={setCurrentImage}
+                />
             </div>
         </div>
     );

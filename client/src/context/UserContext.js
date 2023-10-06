@@ -17,11 +17,16 @@ const UserProvider = ({ children }) => {
     const [view, setView] = useState("login");
 
     const [maps, setMaps] = useState([]);
+    const [currentMap, setCurrentMap] = useState(null);
+    const [currentImageMap, setCurrentImageMap] = useState(null);
+
+    const [posts, setPosts] = useState([]);
+    const [replies, setReplies] = useState([]);
 
     return (
         <UserContext.Provider 
             value={
-                { cat, activeSidebar, setActiveSidebar, user, setUser, view, setView, social, pikminIcons, characterIcons, maps, setMaps, mapIcons, enemyIcons, treasureIcons}
+                { cat, activeSidebar, setActiveSidebar, user, setUser, view, setView, social, pikminIcons, characterIcons, maps, setMaps, mapIcons, enemyIcons, treasureIcons, currentMap, setCurrentMap, currentImageMap, setCurrentImageMap, posts, setPosts, replies, setReplies}
             }
         >
             { children }

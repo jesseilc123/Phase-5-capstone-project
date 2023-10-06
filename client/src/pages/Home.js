@@ -1,10 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import GuideCard from "../components/GuideCard";
 import { UserContext } from "../context/UserContext";
 import Announcements from "../components/Announcements";
 
 function Home() {
-    const { cat } = useContext(UserContext)
+    const { cat, setCurrentMap, setCurrentImageMap} = useContext(UserContext)
+
+    useEffect(() => {
+        setCurrentMap(null)
+        setCurrentImageMap(null)
+    }, [setCurrentMap, setCurrentImageMap]);
 
     return (
         <div className="flex h-full w-full bg-hero-pattern bg-no-repeat bg-grey items-center justify-center">
@@ -15,7 +20,7 @@ function Home() {
                     </p>
                 </div>
                 <Announcements />
-                <div className="flex flex-row flex-wrap h-full w-full items-center justify-evenly">
+                <div className="flex flex-row flex-wrap h-full w-full justify-evenly">
                     {cat.map((c) => (
                         <GuideCard 
                             key={c.category}

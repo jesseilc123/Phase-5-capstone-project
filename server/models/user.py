@@ -5,7 +5,7 @@ from sqlalchemy.ext.hybrid import hybrid_property
 class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
 
-    serialize_rules = ('-replies.user', '-posts.user')
+    serialize_rules = ('-user.replies', 'replies', '-user.posts')
 
     id = db.Column(db.Integer, primary_key=True)
 
