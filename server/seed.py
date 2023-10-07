@@ -49,7 +49,7 @@ if __name__ == '__main__':
             user = rc(users)
             post = Post( 
                 title = fake.sentence()[:-1].title(),
-                body = fake.paragraph(nb_sentences=100),
+                body = fake.paragraph(nb_sentences=randint(1, 4)),
                 category = rc(cat),
                 user_id = user.id
             )

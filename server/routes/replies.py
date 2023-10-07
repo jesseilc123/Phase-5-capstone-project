@@ -14,4 +14,19 @@ class Replies(Resource):
 
         return list, 200
     
+    def post(self):
+        user_id = session.get("user_id")
+        if not user_id:
+            return {"message": "Unauthorized"}, 401
+        new_reply = Reply(
+           content=request.get_json()["content"],
+           post_id=request.get_json()["post_id"]
+        )
+        new_reply.user_id = user_id
+
+        db.session.add(new_reply)
+        db.session.commit()
+
+        return new_reply.to_dict(), 201
+    
 api.add_resource(Replies, "/replies")
