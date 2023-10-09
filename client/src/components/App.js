@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { UserContext, UserProvider } from "../context/UserContext";
 
@@ -16,14 +16,18 @@ import Enemies from "../pages/Enemies"
 
 function App() {
   const { user, setUser } = useContext(UserContext)
+  const [ test, setTest] = useState(null)
 
   useEffect(() => {
-    fetch("/check_session").then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
-      }
+    fetch("http://localhost:5555/check_session")
+      .then((r) => {
+        if (r.ok) {
+          r.json().then(user => setUser(user));
+        } else {
+          r.json().then(err => console.log(err));
+        }
     });
-  }, []);
+    }, []);
 
   return (
     <div>

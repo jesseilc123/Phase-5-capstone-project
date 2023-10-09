@@ -22,7 +22,7 @@ function Treasure() {
             .then(data => {
                 setMaps(data)
             })
-    }, [setMaps]);
+    }, []);
 
     function linkToMaps() {
         const m = maps.filter(map => map.id === currentTreasure.location)
@@ -34,7 +34,7 @@ function Treasure() {
     return (
         <div className="flex h-full w-full bg-beige bg-hero-pattern-2 bg-repeat items-center justify-center ">
             <div className="flex flex-col mt-24 xl:ml-12 lg:mb-[70px] max-w-7xl w-full items-center justify-center">
-                <div className="flex flex-wrap items-center justify-center bg-n-green lg:w-[1000px] h-[300px] lg:h-[700px] w-full lg:mt-12 pb-8 lg:pb-0  lg:rounded-t-lg">
+                <div className="flex flex-wrap items-center justify-center bg-n-green lg:w-[1000px] min-h-[300px] lg:h-[700px] h-full w-full lg:mt-12 pb-8 lg:pb-0  lg:rounded-t-lg">
                     <div>
                         {currentTreasure === null ? (
                             <>

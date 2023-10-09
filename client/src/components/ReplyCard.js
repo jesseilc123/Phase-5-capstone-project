@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useFormik } from "formik";
 import { replySchema } from "../schemas";
+import { UserContext } from "../context/UserContext";
 
 function ReplyCard({ post, users}) {
-    const [viewReplies, setViewReplies] = useState(false)
+    const [viewReplies, setViewReplies] = useState(false);
+    const { user } = useContext(UserContext)
 
     const { values, errors, touched, handleChange, handleSubmit} = useFormik({
         initialValues: {
@@ -54,15 +56,20 @@ function ReplyCard({ post, users}) {
                         </div>
                     </div>
                 ))}
-                <button className="mt-4" onClick={() => setViewReplies(!viewReplies)}>Reply</button>
-                <form onSubmit={handleSubmit}>
-                    <input 
-                        className={`${viewReplies ? "flex" : "hidden"}`}
-                        id="content"
-                        value={values.content}
-                        onChange={handleChange}
-                    />
-                </form>
+                <div className={!user ? "hidden" : ""}>
+                    <button className={`mt-4 ${viewReplies ? "hidden" : "flex"}`} onClick={() => setViewReplies(true)}>Reply</button>
+                    <div className={viewReplies ? "flex" : "hidden"}>
+                        <form onSubmit={handleSubmit}>
+                            <input 
+                                className={`${viewReplies ? "flex" : "hidden"}`}
+                                id="content"
+                                value={values.content}
+                                onChange={handleChange}
+                            />
+                        </form>
+                        <button onClick={() => setViewReplies(false)}>cancel</button>
+                    </div>
+                </div>
             </div>
         </div>
     )

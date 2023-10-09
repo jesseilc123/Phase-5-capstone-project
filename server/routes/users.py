@@ -1,5 +1,6 @@
 from flask_restful import Resource
 from flask import request, session
+from sqlalchemy.exc import IntegrityError 
 
 from models.models import User
 from config import api, db
@@ -12,7 +13,7 @@ class CheckSession(Resource):
             user = User.query.filter(User.id == user_id).first()
             return user.to_dict(), 200
         else:
-            return {"message": "Unauthorized"}, 401
+            return {}, 401
         
 class Users(Resource):
     def get(self):
@@ -27,21 +28,24 @@ class Users(Resource):
 class Login(Resource):
 
     def post(self):
-        username = request.get_json().get('username')
-        user = user = User.query.filter(User.username == username).first()
+        email = request.get_json().get('email')
+        user = User.query.filter(User.email == email).first()
 
-        password = username = request.get_json().get('password')
+        password = request.get_json().get('password')
         if user:
             if user.authenticate(password):
-                session["user_id"] = user.id
+                session.user_id = user.id
+                print(user.id)
+                print(session.user_id)
                 return user.to_dict(), 200
             return {"error": "Invalid password"}, 401
-        return {"error": "Invalid username"}, 401
+        return {"error": "Invalid email"}, 401
 
 class Signup(Resource): 
     
     def post(self):
         user = User(
+            email=request.get_json()["email"],
             username=request.get_json()["username"],
         )
         user.password_hash = request.get_json()["password"]

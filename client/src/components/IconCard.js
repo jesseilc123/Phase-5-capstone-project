@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 function IconCard( { icon, states, setCurrentState, setCurrentImage }) {
     const [search, setSearch] = useState("")

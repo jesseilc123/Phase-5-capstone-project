@@ -12,7 +12,7 @@ const UserProvider = ({ children }) => {
 
     const social = [{platform: "SIGN IN WITH FACEBOOK", image: require("../utils/icons/facebook_icon.png"), color: "bg-facebook"}, {platform: "SIGN IN WITH GOOGLE", image: require("../utils/icons/google_icon.png"), color: "bg-google"}, {platform: "SIGN IN WITH TWITCH", image: require("../utils/icons/twitch_icon.png") , color: "bg-twitch"}, {platform: "SIGN IN WITH APPLE", image: require("../utils/icons/apple_icon.png"), color: "bg-apple"}]
 
-    const postCategories = ["Spoilers", "Memes", "Info", "General", "Game"]
+    const postCategories = ["All", "Spoilers", "Memes", "Info", "General", "Game"]
 
     const [activeSidebar, setActiveSidebar] = useState(false);
     const [user, setUser] = useState(null);
@@ -22,10 +22,12 @@ const UserProvider = ({ children }) => {
     const [currentMap, setCurrentMap] = useState(null);
     const [currentImageMap, setCurrentImageMap] = useState(null);
 
+    const [invalid, setInvalid] = useState(false);
+
     return (
         <UserContext.Provider 
             value={
-                { cat, activeSidebar, setActiveSidebar, user, setUser, view, setView, social, pikminIcons, characterIcons, maps, setMaps, mapIcons, enemyIcons, treasureIcons, currentMap, setCurrentMap, currentImageMap, setCurrentImageMap, postCategories}
+                { cat, activeSidebar, setActiveSidebar, user, setUser, view, setView, social, pikminIcons, characterIcons, maps, setMaps, mapIcons, enemyIcons, treasureIcons, currentMap, setCurrentMap, currentImageMap, setCurrentImageMap, postCategories, invalid, setInvalid}
             }
         >
             { children }
