@@ -4,12 +4,14 @@ import ReplyCard from "../components/ReplyCard";
 import { Link } from "react-router-dom";
 import PostForm from "../components/PostForm"
 import ReplyForm from "../components/ReplyForm";
+import { postSchema } from "../schemas";
 
 function Forums() {
     const { user, postCategories, postForm, setPostForm, posts, setPosts, allUsers, setAllUsers} = useContext(UserContext)
     
     
     const [activeCat, setActiveCat] = useState("All")
+    const [replies, setReplies] = useState([])
 
     useEffect(() => {
         window.scroll(0, 0)
@@ -17,7 +19,12 @@ function Forums() {
             .then((r) => r.json())
             .then(data => {
                 setAllUsers(data)
-                console.log(data)
+            })
+
+        fetch("/replies") 
+            .then((r) => r.json())
+            .then(data => {
+                setReplies(data)
             })
 
         fetch("/posts") 
@@ -33,13 +40,17 @@ function Forums() {
     }
 
     function rerenderReply(e) {
-        const newReply = posts.filter(post => {
-            if (post.id === e.post_id) {
-                return post.replies.push(e)
-            } 
-            return post
-        }).map(post => post)
-        setPosts(newReply)
+        const newlist = [...replies, e]
+        setReplies(newlist)
+    }
+
+    function deleteRenderReplies(r){
+        const newReplies = replies.filter(reply => {
+            if (reply.id !== r.id) {
+                return reply
+            }
+        })
+        setReplies(newReplies)
     }
 
     return (
@@ -95,21 +106,26 @@ function Forums() {
                                     </div>
                                     <p>{(post.created_at).slice(0, 10)}</p>
                                 </div>
-                                <div className="flex flex-col mx-2 mt-2 pb-2 border-b-[1px]">
+                                <div className="flex flex-col mx-2 mt-2 pb-2 ">
                                     <p className="bg-blue text-white w-fit px-2 border-black rounded-lg">{post.category}</p>
                                     <p className="font-bold">{post.title}</p>
                                     <p>{post.body}</p>
                                 </div>
-                                <p className="flex items-center justify-center border-b-[1px] border-black h-full w-full ">{post.replies.length} replies</p>
-                                <div className="flex flex-col h-full w-full justify-center items-center mb-4 px-2">
-                                    {post.replies.map(reply => (
+                                <p className="flex items-center justify-center border-y-[1px] border-black mx-2 ">{post.replies.length} replies</p>
+                                <div >
+                                    {replies.filter(reply => {
+                                        if (reply.post_id === post.id) return reply
+                                    }).map(reply => (
                                         < ReplyCard
                                             key={reply.id}
-                                            reply={reply}  
+                                            reply={reply} 
+                                            deleteRenderReplies={deleteRenderReplies}
                                         />
                                     ))}
                                 </div>
-                                <ReplyForm post={post} rerenderReply={rerenderReply}/>
+                                <div className="flex justify-start items-start p-2">
+                                    <ReplyForm post={post} rerenderReply={rerenderReply}/>
+                                </div>
                             </div>
                         ))}
                     </div>

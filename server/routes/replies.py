@@ -29,4 +29,13 @@ class Replies(Resource):
 
         return new_reply.to_dict(), 201
     
+    def delete(self):
+        reply = Reply.query.filter(Reply.id == request.get_json()["id"]).first()
+
+        db.session.delete(reply)
+        db.session.commit()
+
+        return {"message": "reply successfully deleted"}, 200
+
+    
 api.add_resource(Replies, "/replies")

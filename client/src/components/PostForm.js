@@ -40,7 +40,7 @@ function PostForm( { rerenderPost } ) {
                 <div>
                     <label>Title</label>
                     <input
-                        className={`flex w-full border-2 py-1  px-0.5 ${errors.title && touched.title ? "border-red outline-none" : "outline-light-cyan"}`}
+                        className={`flex w-full border-2 py-1  px-0.5 ${errors.title && touched.title ? "border-red" : "outline-light-cyan"}`}
                         type="text"
                         id="title"
                         placeholder="max 250 characters..."
