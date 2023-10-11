@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { UserContext, UserProvider } from "../context/UserContext";
+import { UserProvider } from "../context/UserContext";
 
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
@@ -15,20 +15,6 @@ import Login from "../pages/Login";
 import Enemies from "../pages/Enemies"
 
 function App() {
-  const { user, setUser } = useContext(UserContext)
-  const [ test, setTest] = useState(null)
-
-  useEffect(() => {
-    fetch("http://localhost:5555/check_session")
-      .then((r) => {
-        if (r.ok) {
-          r.json().then(user => setUser(user));
-        } else {
-          r.json().then(err => console.log(err));
-        }
-    });
-    }, []);
-
   return (
     <div>
       <UserProvider>

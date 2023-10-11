@@ -11,13 +11,13 @@ function Treasure() {
     const [treasures, setTreasures] = useState([])
     useEffect(() => {
         window.scroll(0, 0)
-        fetch("http://localhost:5555/treasures") 
+        fetch("/treasures") 
             .then((r) => r.json())
             .then(data => {
                 setTreasures(data)
             })
 
-        fetch("http://localhost:5555/maps") 
+        fetch("/maps") 
             .then((r) => r.json())
             .then(data => {
                 setMaps(data)

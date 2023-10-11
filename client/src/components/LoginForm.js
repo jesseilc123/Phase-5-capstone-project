@@ -15,7 +15,7 @@ function LoginForm() {
         },
         validationSchema: loginSchema,
         onSubmit: (values) => {
-            fetch("http://localhost:5555/login", {
+            fetch("/login", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json",

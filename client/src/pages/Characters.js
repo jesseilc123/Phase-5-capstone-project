@@ -10,7 +10,7 @@ function Characters() {
     const [characters, setCharacters] = useState([])
     useEffect(() => {
         window.scroll(0, 0)
-        fetch("http://localhost:5555/characters") 
+        fetch("/characters") 
             .then((r) => r.json())
             .then(data => {
                 setCharacters(data)

@@ -12,13 +12,13 @@ function Enemies() {
     const [enemies, setEnemies] = useState([]);
     useEffect(() => {
         window.scroll(0, 0)
-        fetch("http://localhost:5555/enemies") 
+        fetch("/enemies") 
             .then((r) => r.json())
             .then(data => {
                 setEnemies(data)
             })
         
-        fetch("http://localhost:5555/maps") 
+        fetch("/maps") 
             .then((r) => r.json())
             .then(data => {
                 setMaps(data)

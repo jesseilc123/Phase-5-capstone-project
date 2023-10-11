@@ -10,12 +10,12 @@ function Pikmin() {
     const [pikmins, setPikmins] = useState([])
     useEffect(() => {
         window.scroll(0, 0)
-        fetch("http://localhost:5555/pikmins") 
+        fetch("/pikmins") 
             .then((r) => r.json())
             .then(data => {
                 setPikmins(data)
             })
-    }, []);
+    }, [setPikmins]);
 
 
 

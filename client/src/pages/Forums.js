@@ -2,37 +2,45 @@ import React, { useState, useEffect, useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import ReplyCard from "../components/ReplyCard";
 import { Link } from "react-router-dom";
-import { useFormik } from "formik";
+import PostForm from "../components/PostForm"
+import ReplyForm from "../components/ReplyForm";
 
 function Forums() {
-    const { user, postCategories } = useContext(UserContext)
+    const { user, postCategories, postForm, setPostForm, posts, setPosts, allUsers, setAllUsers} = useContext(UserContext)
     
-    const [users, setUsers] = useState([])
-    const [posts, setPosts] = useState([])
-    const [replies, setReplies] = useState([])
+    
     const [activeCat, setActiveCat] = useState("All")
-    const [postForm, setPostForm] = useState(false)
 
     useEffect(() => {
         window.scroll(0, 0)
-        fetch("http://localhost:5555/posts") 
+        fetch("/users") 
             .then((r) => r.json())
             .then(data => {
-                setPosts(data)
+                setAllUsers(data)
+                console.log(data)
             })
 
-        fetch("http://localhost:5555/replies") 
+        fetch("/posts") 
             .then((r) => r.json())
             .then(data => {
-                setReplies(data)
-            })
-
-        fetch("http://localhost:5555/users") 
-            .then((r) => r.json())
-            .then(data => {
-                setUsers(data)
+                setPosts(data.reverse())
             })
     }, []);
+
+    function rerenderPost(e) {
+        const newlist = [e, ...posts]
+        setPosts(newlist)
+    }
+
+    function rerenderReply(e) {
+        const newReply = posts.filter(post => {
+            if (post.id === e.post_id) {
+                return post.replies.push(e)
+            } 
+            return post
+        }).map(post => post)
+        setPosts(newReply)
+    }
 
     return (
         <div className="flex h-full w-full bg-beige bg-hero-pattern-2 bg-repeat items-center justify-center "> 
@@ -42,7 +50,7 @@ function Forums() {
                         <h2 className="flex text-4xl font-bold m-3 w-full">{posts.length} comments</h2>
                         <div className="flex md:flex-nowrap flex-wrap flex-row w-full rounded-md mr-6">
                             {postCategories.map(c => (
-                                <button className={`flex justify-center h-full w-1/2 min-w-fit border-2 p-2 ${activeCat === c ? "bg-light-blue" : "bg-light-grey"}`} onClick={() => setActiveCat(c)}>
+                                <button key={c} className={`flex justify-center h-full w-1/2 min-w-fit border-2 p-2 ${activeCat === c ? "bg-light-blue" : "bg-light-grey"}`} onClick={() => setActiveCat(c)}>
                                     {c}
                                 </button>
                             ))}
@@ -67,15 +75,7 @@ function Forums() {
                             </div>
                         )}
                         </div>
-                        <div className={`flex flex-col bg-off-white h-full w-3/5 border-2 rounded-lg ${postForm ? "flex" : "hidden"}`}>
-                            <form className="flex flex-col h-full">
-                                <label>title</label>
-                                <label>body</label>
-                                <label>category</label>
-                                <label>user_id</label>
-                            </form>
-                            <button onClick={() => setPostForm(false)}>cancel</button>
-                        </div>
+                        < PostForm rerenderPost={rerenderPost} />
                     </div>
                     <div className="flex flex-col justify-center items-center gap-3 mb-8">
                         {posts.filter(post => {
@@ -84,15 +84,14 @@ function Forums() {
                             } else if (post.category === activeCat) {
                                 return post
                             }
-                            return 0
                         }).map(post => ( 
                             <div key={post.id} className="flex flex-col h-full w-5/6  bg-yellow rounded-md outline-dashed">
                                 <div className="flex flex-row gap-1 ml-2 mt-2 justify-start items-start ">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
                                     </svg>
-                                    <div >
-                                        {users.filter(user => user.id === post.user_id).map(user => <p>{user.username}</p>)}
+                                    <div>
+                                        {allUsers.filter(oneUser => oneUser.id === post.user_id).map(oneUser => <p key={oneUser.id} className={`font-semibold ${oneUser.id === user.id ? "text-light-blue" : "text-grey"}`}>{oneUser.username}</p>)}
                                     </div>
                                     <p>{(post.created_at).slice(0, 10)}</p>
                                 </div>
@@ -101,7 +100,16 @@ function Forums() {
                                     <p className="font-bold">{post.title}</p>
                                     <p>{post.body}</p>
                                 </div>
-                                < ReplyCard post={post} users={users} />
+                                <p className="flex items-center justify-center border-b-[1px] border-black h-full w-full ">{post.replies.length} replies</p>
+                                <div className="flex flex-col h-full w-full justify-center items-center mb-4 px-2">
+                                    {post.replies.map(reply => (
+                                        < ReplyCard
+                                            key={reply.id}
+                                            reply={reply}  
+                                        />
+                                    ))}
+                                </div>
+                                <ReplyForm post={post} rerenderReply={rerenderReply}/>
                             </div>
                         ))}
                     </div>

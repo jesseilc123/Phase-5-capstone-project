@@ -28,15 +28,13 @@ class Users(Resource):
 class Login(Resource):
 
     def post(self):
-        email = request.get_json().get('email')
+        email = request.get_json()['email']
         user = User.query.filter(User.email == email).first()
 
-        password = request.get_json().get('password')
+        password = request.get_json()['password']
         if user:
             if user.authenticate(password):
-                session.user_id = user.id
-                print(user.id)
-                print(session.user_id)
+                session["user_id"] = user.id
                 return user.to_dict(), 200
             return {"error": "Invalid password"}, 401
         return {"error": "Invalid email"}, 401

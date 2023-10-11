@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import pikminIcons from "./images/pikmin"
 import characterIcons from "./images/character";
 import  mapIcons from "./images/map";
@@ -15,7 +15,6 @@ const UserProvider = ({ children }) => {
     const postCategories = ["All", "Spoilers", "Memes", "Info", "General", "Game"]
 
     const [activeSidebar, setActiveSidebar] = useState(false);
-    const [user, setUser] = useState(null);
     const [view, setView] = useState("login");
 
     const [maps, setMaps] = useState([]);
@@ -23,11 +22,26 @@ const UserProvider = ({ children }) => {
     const [currentImageMap, setCurrentImageMap] = useState(null);
 
     const [invalid, setInvalid] = useState(false);
+    const [postForm, setPostForm] = useState(false);
+
+    const [user, setUser] = useState("");
+    const [posts, setPosts] = useState([]);
+    const [allUsers, setAllUsers] = useState([])
+
+    useEffect(() => {
+      fetch("/check_session").then((r) => {
+        if (r.ok) {
+          r.json().then(user =>setUser(user));
+        }
+      });
+    }, []);
+
+
 
     return (
         <UserContext.Provider 
             value={
-                { cat, activeSidebar, setActiveSidebar, user, setUser, view, setView, social, pikminIcons, characterIcons, maps, setMaps, mapIcons, enemyIcons, treasureIcons, currentMap, setCurrentMap, currentImageMap, setCurrentImageMap, postCategories, invalid, setInvalid}
+                { cat, activeSidebar, setActiveSidebar, view, setView, social, pikminIcons, characterIcons, maps, setMaps, mapIcons, enemyIcons, treasureIcons, currentMap, setCurrentMap, currentImageMap, setCurrentImageMap, postCategories, invalid, setInvalid, postForm, setPostForm, user, setUser, posts, setPosts, allUsers, setAllUsers}
             }
         >
             { children }

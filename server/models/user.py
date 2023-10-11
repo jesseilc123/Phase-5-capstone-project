@@ -32,5 +32,5 @@ class User(db.Model, SerializerMixin):
 
     def __repr__(self):
         return f"User(id={self.id}, " + \
-            f"username={self.username})" + \
+            f"username={self.username}, " + \
             f"email={self.email})"
