@@ -17,10 +17,10 @@ class Post(db.Model, SerializerMixin):
 
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
-    replies = db.relationship("Reply", backref="post")
+    replies = db.relationship("Reply", cascade="all, delete", backref="post")
 
     def __repr__(self):
         return f"Post(id={self.id}, " + \
             f"title={self.title}, " + \
-            f"body={self.body}), " + \
+            f"body={self.body}, " + \
             f"user_id={self.user_id})"

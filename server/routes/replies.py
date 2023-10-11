@@ -36,6 +36,19 @@ class Replies(Resource):
         db.session.commit()
 
         return {"message": "reply successfully deleted"}, 200
-
     
+    def patch(self):
+        user_id = session.get("user_id")
+        if not user_id:
+            return {"message": "Unauthorized"}, 401
+        id = request.get_json()["id"]
+
+        reply = Reply.query.filter(Reply.id == id).first()
+        setattr(reply, "content", request.get_json()["content"])
+        
+        db.session.add(reply)
+        db.session.commit()
+
+        return reply.to_dict(), 201
+
 api.add_resource(Replies, "/replies")

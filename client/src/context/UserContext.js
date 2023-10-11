@@ -26,7 +26,8 @@ const UserProvider = ({ children }) => {
 
     const [user, setUser] = useState("");
     const [posts, setPosts] = useState([]);
-    const [allUsers, setAllUsers] = useState([])
+    const [replies, setReplies] = useState([]);
+    const [allUsers, setAllUsers] = useState([]);
 
     useEffect(() => {
       fetch("/check_session").then((r) => {
@@ -41,7 +42,7 @@ const UserProvider = ({ children }) => {
     return (
         <UserContext.Provider 
             value={
-                { cat, activeSidebar, setActiveSidebar, view, setView, social, pikminIcons, characterIcons, maps, setMaps, mapIcons, enemyIcons, treasureIcons, currentMap, setCurrentMap, currentImageMap, setCurrentImageMap, postCategories, invalid, setInvalid, postForm, setPostForm, user, setUser, posts, setPosts, allUsers, setAllUsers}
+                { cat, activeSidebar, setActiveSidebar, view, setView, social, pikminIcons, characterIcons, maps, setMaps, mapIcons, enemyIcons, treasureIcons, currentMap, setCurrentMap, currentImageMap, setCurrentImageMap, postCategories, invalid, setInvalid, postForm, setPostForm, user, setUser, posts, setPosts, allUsers, setAllUsers, replies, setReplies}
             }
         >
             { children }

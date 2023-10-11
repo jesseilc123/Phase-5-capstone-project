@@ -30,4 +30,12 @@ class Posts(Resource):
 
         return new_post.to_dict(), 201
     
+    def delete(self):
+        post = Post.query.filter(Post.id == request.get_json()["id"]).first()
+
+        db.session.delete(post)
+        db.session.commit()
+
+        return {"message": "post successfully deleted"}, 200
+    
 api.add_resource(Posts, "/posts")
