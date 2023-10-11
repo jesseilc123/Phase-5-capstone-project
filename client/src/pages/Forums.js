@@ -45,10 +45,23 @@ function Forums() {
         setPosts(newPosts)
     }
 
+    function editRenderPost(p){
+        console.log(p)
+        const newPosts = posts.map(post => {
+            if (post.id === p.id) {
+                post.title = p.title
+                post.category = p.category
+                post.body = p.body
+            }
+            return post
+        })
+        setPosts(newPosts)
+    }
+
     return (
         <div className="flex h-full w-full bg-beige bg-hero-pattern-2 bg-repeat items-center justify-center "> 
             <div className="flex flex-col mt-24 xl:ml-12 lg:mb-[70px] max-w-7xl w-fill items-center justify-center">
-                <div className="flex flex-col flex-wrap bg-n-green lg:w-[1000px] h-fill w-fill lg:mt-12 pb-8 lg:pb-0  lg:rounded-t-lg border-black border-2">
+                <div className="flex flex-col flex-wrap bg-n-green lg:w-[1000px] h-fill min-h-screen w-fill min-w-screen lg:mt-12 pb-8 lg:pb-0  lg:rounded-t-lg border-black border-2">
                     <div className="flex flex-row items-center justify-between mb-3">
                         <h2 className="flex text-4xl font-bold m-3 w-full">{posts.length} comments</h2>
                     </div>
@@ -56,9 +69,9 @@ function Forums() {
                         <div>
                         {!user ? (
                             <div>
-                                <p className="bg-off-white rounded-lg border-2 px-2">
+                                <div className="bg-off-white rounded-lg border-2 px-2">
                                     Please <Link to="/login" className="underline font-semibold">Login</Link> to reply or post
-                                </p>
+                                </div>
                             </div>
                             ) : (
                             <div>
@@ -92,6 +105,7 @@ function Forums() {
                                 key={post.id}
                                 post={post}
                                 deleteRenderPost={deleteRenderPost}
+                                editRenderPost={editRenderPost}
                             /> 
                         ))}
                     </div>

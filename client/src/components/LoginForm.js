@@ -54,7 +54,7 @@ function LoginForm() {
                 </div>
             </div>
             <div className={`flex flex-col lg:w-1/2 w-full items-center justify-center ${invalid ? "border-2 border-red p-2 rounded-lg": "border-none"}`}>
-                <p className="flex font-bold text-xl justify-center">Sign in with Email</p>
+                <p className="flex font-bold text-xl justify-center">Login with Email</p>
                 {invalid ? (<p className="text-red">Invalid email or password</p>) : (<p></p>)}
                 <form autoComplete="off" onSubmit={handleSubmit} className="flex flex-col mt-4 h-full lg:w-4/5 w-full">
                     <input 

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import { useFormik } from "formik";
 import { signupSchema } from "../schemas";
@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 function SignupForm() {
     const { setUser, social, setInvalid } = useContext(UserContext)
+    const [error, setError] = useState(null)
     let navigate = useNavigate() 
 
     const { values, errors, touched, handleChange, handleSubmit} = useFormik({
@@ -28,6 +29,7 @@ function SignupForm() {
             }).then(r => {
                 if (r.ok) {
                     r.json().then(user => {
+                        console.log(user)
                         setUser(user)
                         setInvalid(false)
                         navigate("/")
@@ -35,6 +37,7 @@ function SignupForm() {
                 } else {
                     r.json().then((err) => {
                         console.log(err)
+                        setError(err.message)
                     })
                 }
             })
@@ -57,7 +60,7 @@ function SignupForm() {
                 </div>
             </div>
             <div className={`flex flex-col lg:w-1/2 w-full justify-center items-center`}>
-                <p className="flex font-bold text-xl justify-center">Sign in with Email</p>
+                <p className="flex font-bold text-xl justify-center">Signup with Email</p>
                 <form autoComplete="off" onSubmit={handleSubmit} className="flex flex-col mt-4 h-full lg:w-4/5 w-full">
                     <input 
                         className={`flex h-full w-full text-xl border-b-2 pb-1 border-light-grey hover:border-grey focus:border-grey outline-none ${errors.email && touched.email ? "border-light-red hover:border-red focus:border-red" : "border-light-grey hover:border-grey focus:border-grey"}`}
@@ -69,7 +72,7 @@ function SignupForm() {
                     />
                     {errors.email && touched.email ? (<p className="text-light-red">{errors.email}</p>) : (<p className="text-white">.</p>)}
                     <input 
-                        className={`flex h-full w-full text-xl border-b-2 pb-1 border-light-grey hover:border-grey focus:border-grey outline-none ${errors.username && touched.username ? "border-light-red hover:border-red focus:border-red" : "border-light-grey hover:border-grey focus:border-grey"}`}
+                        className={`flex h-full w-full text-xl border-b-2 pb-1 border-light-grey hover:border-grey focus:border-grey outline-none ${errors.username && touched.username ? "border-light-red hover:border-red focus:border-red" : "border-light-grey hover:border-grey focus:border-grey"} ${error ? "border-light-red hover:border-red focus:border-red" : "border-light-grey hover:border-grey focus:border-grey"}`}
                         type="username"
                         id="username"
                         placeholder="Username"
@@ -77,6 +80,7 @@ function SignupForm() {
                         onChange={handleChange}
                     />
                     {errors.username && touched.username ? (<p className="text-light-red">{errors.username}</p>) : (<p className="text-white">.</p>)}
+                    {error ? (<p className="text-light-red">{error}</p>) : (<p className="hidden"></p>)}
                     <input 
                         className={`flex h-full w-full text-xl border-b-2 pb-1 border-light-grey hover:border-grey focus:border-grey outline-none ${errors.password && touched.password ? "border-light-red hover:border-red focus:border-red" : "border-light-grey hover:border-grey focus:border-grey"}`}
                         type="password"

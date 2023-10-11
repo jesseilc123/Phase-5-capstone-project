@@ -2,10 +2,43 @@ import React, { useContext, useState } from "react";
 import ReplyCard from "./ReplyCard";
 import ReplyForm from "./ReplyForm";
 import { UserContext } from "../context/UserContext";
+import { useFormik } from "formik";
+import { postSchema } from "../schemas";
 
-function PostCard({ post, deleteRenderPost }) {
+function PostCard({ post, deleteRenderPost, editRenderPost }) {
     const [postMenu, setPostMenu] = useState(false)
-    const {replies, setReplies, allUsers, user, posts} = useContext(UserContext)
+    const [postEdit, setPostEdit] = useState(false)
+    const {replies, setReplies, allUsers, user} = useContext(UserContext)
+
+    const { values, errors, touched, handleChange, handleSubmit, resetForm} = useFormik({
+        initialValues: {
+            id: post.id,
+            title: post.title,
+            body: post.body,
+            category: post.category,
+        },
+        validationSchema: postSchema,
+        onSubmit: (values) => {
+            fetch("/posts", {
+                method: "PATCH",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify(values, null, 2),
+            }).then(r => {
+                if (r.ok) {
+                    r.json().then(data => {
+                        resetForm()
+                        post = data
+                        editRenderPost(data)
+                        setPostEdit(false)
+                    })
+                } else {
+                    r.json().then(err => console.log(err))
+                }
+            })
+        }
+    })
 
     function handlePostDelete(post) {
         console.log("delete")
@@ -64,11 +97,15 @@ function PostCard({ post, deleteRenderPost }) {
                     <div className="flex w-fit">{(post.created_at).slice(0, 10)}</div>
                 </div>
                 <div className={`flex-row w-full justify-end ${user.id === post.user_id ? "flex" : "hidden"}`}>
-                    <div className={`flex-row gap-1 items-center justify-center ${postMenu ? "flex" : "hidden"}`}>
+                    <div className={`flex-row gap-1 items-center justify-center ${postMenu ? "flex" : "hidden"} ${postEdit ? "hidden" : "flex"}`}>
                         <button 
                             className="bg-n-green hover:bg-light-green flex text-md h-fit w-fit rounded-lg px-1 font-semibold border-[1px]"
                             type="button"
-                            onClick={() => setPostMenu(false)}
+                            onClick={() => {
+                                setPostEdit(true)
+                                setPostMenu(false)
+                                }
+                            }
                         >
                             Edit
                         </button>
@@ -87,10 +124,72 @@ function PostCard({ post, deleteRenderPost }) {
                     </button>
                 </div>
             </div>
-            <div className="flex flex-col mx-2 mt-2 pb-2 ">
-                <p className="bg-blue text-white w-fit px-2 border-black rounded-lg">{post.category}</p>
-                <p className="font-bold">{post.title}</p>
-                <p>{post.body}</p>
+            <div>
+                {postEdit ? (
+                    <div>
+                        <form className="flex flex-col h-full w-full p-2 gap-2" onSubmit={handleSubmit} >
+                            <div className="flex w-1/5">
+                                <select
+                                    className="flex w-full border-2 py-1 px-0.5"
+                                    type="select"
+                                    id="category"
+                                    placeholder="category"
+                                    value={values.category}
+                                    onChange={handleChange}
+                                >
+                                    <option value="All">All</option>
+                                    <option value="Spoilers">Spoilers</option>
+                                    <option value="Memes">Memes</option>
+                                    <option value="Info">Info</option>
+                                    <option value="General">General</option>
+                                    <option value="Game">Game</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>Title</label>
+                                <input
+                                    className={`flex w-full border-2 py-1  px-0.5 ${errors.title && touched.title ? "border-red" : "outline-light-cyan"}`}
+                                    type="text"
+                                    id="title"
+                                    placeholder="max 250 characters..."
+                                    value={values.title}
+                                    onChange={handleChange}  
+                                />
+                                {errors.title && touched.title ? (<p className="text-light-red">{errors.title}</p>) : (<p className="hidden"></p>)}
+                            </div>
+                            <div>
+                                <label>Post</label>
+                                <textarea
+                                    className={`flex w-full border-2 py-1 px-0.5 ${errors.body && touched.body ? "border-red outline-none" : "outline-light-cyan "}`}
+                                    rows="4"
+                                    type="textarea"
+                                    id="body"
+                                    placeholder="max 250 characters..."
+                                    value={values.body}
+                                    onChange={handleChange}     
+                                />
+                                {errors.body && touched.body ? (<p className="text-light-red">{errors.body}</p>) : (<p className="hidden"></p>)}
+                            </div>
+                            <div className="flex flex-row items-center justify-center gap-2">
+                                <button type="submit" className="flex text-xl items-center justify-center bg-n-green h-fit w-fit rounded-lg px-1 mb-2 font-semibold border-2 hover:bg-light-green" >
+                                    Submit
+                                </button>
+                                <button type="button" className="flex text-xl items-center justify-center bg-light-red h-fit w-fit rounded-lg px-1 mb-2 font-semibold border-2 hover:bg-red" onClick={() => {
+                                    setPostEdit(false)
+                                    resetForm()
+                                }}>
+                                    Cancel
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                ) : (
+                    <div className="flex flex-col mx-2 mt-2 pb-2 ">
+                        <p className="bg-blue text-white w-fit px-2 border-black rounded-lg">{post.category}</p>
+                        <p className="font-bold">{post.title}</p>
+                        <p>{post.body}</p>
+                    </div>
+                )}
             </div>
             <div className="flex items-center justify-center border-y-[1px] border-black mx-2 ">{post.replies.length} replies</div>
             <div >

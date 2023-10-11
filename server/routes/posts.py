@@ -38,4 +38,21 @@ class Posts(Resource):
 
         return {"message": "post successfully deleted"}, 200
     
+    def patch(self):
+        user_id = session.get("user_id")
+        if not user_id:
+            return {"message": "Unauthorized"}, 401
+        id = request.get_json()["id"]
+
+        post = Post.query.filter(Post.id == id).first()
+
+        setattr(post, "title", request.get_json()["title"])
+        setattr(post, "body", request.get_json()["body"])
+        setattr(post, "category", request.get_json()["category"])
+        
+        db.session.add(post)
+        db.session.commit()
+
+        return post.to_dict(), 201 
+    
 api.add_resource(Posts, "/posts")

@@ -91,7 +91,6 @@ function PostForm( { rerenderPost } ) {
                     </button>
                 </div>
             </form>
-
         </div>
     )
 }
