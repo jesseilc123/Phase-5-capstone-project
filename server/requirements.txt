@@ -1,0 +1,8 @@
+flask-sqlalchemy == "3.0.0"
+flask-bcrypt == "*"
+flask-cors == "*"
+flask-restful == "*"
+flask-migrate == "*"
+sqlalchemy-serializer == "*"
+flask == "*"
+faker == "*"

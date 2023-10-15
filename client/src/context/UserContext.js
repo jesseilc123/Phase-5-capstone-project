@@ -4,7 +4,6 @@ import characterIcons from "./images/character";
 import  mapIcons from "./images/map";
 import enemyIcons from "./images/enemy"
 import treasureIcons from "./images/treasure";
-
 const UserContext = createContext({});
 
 const UserProvider = ({ children }) => {

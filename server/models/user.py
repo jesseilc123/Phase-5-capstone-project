@@ -11,7 +11,7 @@ class User(db.Model, SerializerMixin):
 
     username = db.Column(db.String, unique=True, nullable=False)
     email = db.Column(db.String, unique=True, nullable=False)
-    _password_hash = db.Column(db.String)
+    _password_hash = db.Column(db.String, nullable=False)
 
     replies = db.relationship('Reply', backref='user')
     posts = db.relationship('Post', backref='user')

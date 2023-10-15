@@ -58,7 +58,7 @@ function LoginForm() {
                 {invalid ? (<p className="text-red">Invalid email or password</p>) : (<p></p>)}
                 <form autoComplete="off" onSubmit={handleSubmit} className="flex flex-col mt-4 h-full lg:w-4/5 w-full">
                     <input 
-                        className={`flex h-full w-full text-xl border-b-2 pb-1  outline-none ${invalid ? "border-light-red hover:border-red focus:border-red" : "border-light-grey hover:border-grey focus:border-grey"}`}
+                        className={`flex h-full w-full text-xl border-b-2 pb-1  outline-none ${invalid ? "border-light-red hover:border-red focus:border-red" : "border-light-grey hover:border-grey focus:border-grey"} ${errors.email && touched.email ? "border-light-red hover:border-red focus:border-red" : "border-light-grey hover:border-grey focus:border-grey"}`}
                         type="text"
                         id="email"
                         placeholder="Email"
@@ -67,7 +67,7 @@ function LoginForm() {
                     />
                     {errors.email && touched.email ? (<p className="text-light-red">{errors.email}</p>) : (<p className="text-white">.</p>)}
                     <input 
-                        className={`flex h-full w-full text-xl border-b-2 pb-1 outline-none ${invalid ? "border-light-red hover:border-red focus:border-red" : "border-light-grey hover:border-grey focus:border-grey"}`}
+                        className={`flex h-full w-full text-xl border-b-2 pb-1 outline-none ${invalid ? "border-light-red hover:border-red focus:border-red" : "border-light-grey hover:border-grey focus:border-grey"} ${errors.password && touched.password ? "border-light-red hover:border-red focus:border-red" : "border-light-grey hover:border-grey focus:border-grey"}`}
                         type="password"
                         id="password"
                         placeholder="Password"
@@ -78,9 +78,10 @@ function LoginForm() {
                     <button type="submit" className="flex w-full h-full text-xl items-center justify-center font-bold border-black border-2  rounded-lg bg-blue text-white hover:bg-light-blue">
                         <p className="p-2">Login</p>
                     </button>
-                    <div className="flex items-center justify-center">
-                        <p>By creating an account, you agree to&nbsp;
-                            <button className="text-light-cyan underline font-bold">Terms of Use</button> and 
+                    <div className="flex flex-row wrap items-center justify-center">
+                        <p className="flex flex-row flex-wrap items-center justify-center">By creating an account, you agree to&nbsp;
+                            <button className="text-light-cyan underline font-bold">Terms of Use</button>
+                            &nbsp;and&nbsp;
                             <button className="text-light-cyan underline font-bold">Privacy Policy</button>
                         </p>
                     </div>

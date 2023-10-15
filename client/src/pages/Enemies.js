@@ -69,7 +69,7 @@ function Enemies() {
                                             <span> {currentEnemy.sparklium}</span>
                                         </p>
                                         <p className="text-lg font-semibold ml-1" >
-                                            <span className="bg-beige rounded-xl pb-1 px-2">location:</span>
+                                            <span className="bg-beige rounded-xl pb-1 px-2">Location:</span>
                                             <Link to="/maps" onClick={() => linkToMaps()}> {maps.filter(map => map.id === currentEnemy.location).map(name => name.name)}</Link>
                                         </p>
                                     </div>

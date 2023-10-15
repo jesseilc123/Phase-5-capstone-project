@@ -4,8 +4,10 @@ function IconCard( { icon, states, setCurrentState, setCurrentImage }) {
     const [search, setSearch] = useState("")
 
     function handleClick(item){
+        console.log(item)
         states.filter(state => {
             if (state.name === item.name) {
+                console.log(state)
                 setCurrentState(state)
                 setCurrentImage(item.image)
             }
@@ -43,11 +45,11 @@ function IconCard( { icon, states, setCurrentState, setCurrentImage }) {
                 }).map((item) => (
                     <button 
                         key={item.name} 
-                        className={`flex flex-col h-[300px] w-[300px] bg-light-cyan items-center justify-center rounded-sm hover:border-n-green hover:border-4 focus:border-n-green focus:border-4 focus:scale-90`}
+                        className={`flex flex-col h-[300px] w-[300px] bg-light-cyan items-center justify-center rounded-lg hover:border-n-green hover:border-4 focus:border-n-green focus:border-4 focus:scale-90 border-2`}
                         onClick={() => handleClick(item)}
                     >
-                        <img src={item.image} alt={item.name} className="h-48 w-48 rounded-xl"/>
-                        <p className="font-bold text-2xl mt-4">{item.name}</p>
+                        <img src={item.image} alt={item.name} className="h-48 w-48 rounded-xl bg-white border-2 shadow-md"/>
+                        <p className="flex flex-wrap w-fit font-bold text-2xl mt-4 bg-off-white px-2 pb-0.5 rounded-xl border-2 shadow-md">{item.name}</p>
                     </button>
                 ))}
             </div>

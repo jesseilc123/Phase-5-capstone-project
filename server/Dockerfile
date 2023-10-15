@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:3.8
 
 WORKDIR /server
 
@@ -11,6 +11,8 @@ RUN pip install Flask-RESTful
 RUN pip install Flask-Migrate
 RUN pip install SQLAlchemy-serializer
 RUN pip install Faker
+
+# RUN pip install -r requirements.txt
 
 RUN python seed.py
 

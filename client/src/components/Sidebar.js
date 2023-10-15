@@ -11,16 +11,16 @@ function Sidebar() {
             {activeSidebar ? (
                 <>
                     <div className="flex flex-col">
-                        <div className="text-black">
+                        <div className=" font-semibold w-full ml-2">
                             Walkthrough Menu
                         </div>
                         <div className="flex flex-col justify-start items-start">
                             {cat.map((c) => (
                                 <Link to={`/${c.category}`}
                                     key={c.category} 
-                                    className="text-2xl pt-3 ml-8 hover:text-orange-300" 
+                                    className="text-2xl pt-3 ml-8 font-semibold hover:text-light-blue" 
                                 >
-                                    {c.category}
+                                    <button onClick={() => setActiveSidebar(!activeSidebar)}>{c.category}</button>
                                 </Link>
                             ))}
                         </div>

@@ -51,6 +51,7 @@ class Signup(Resource):
             db.session.add(user)
             db.session.commit()
             session["user_id"] = user.id
+            print(session["user_id"])
 
             return user.to_dict(), 201
         except IntegrityError:

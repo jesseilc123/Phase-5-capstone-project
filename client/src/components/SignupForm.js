@@ -20,7 +20,7 @@ function SignupForm() {
         },
         validationSchema: signupSchema,
         onSubmit: (values) => {
-            fetch("http://localhost:5555/signup", {
+            fetch("/signup", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json",

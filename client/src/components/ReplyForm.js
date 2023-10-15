@@ -48,7 +48,7 @@ function ReplyForm ({ rerenderReply, post}) {
                             value={values.content}
                             onChange={handleChange}
                         />
-                        <p>{errors.content && touched.content ? (<p className="text-light-red">{errors.content}</p>) : (<p className="hidden"></p>)}</p>
+                        {errors.content && touched.content ? (<p className="text-light-red">{errors.content}</p>) : (<p className="hidden"></p>)}
                     </div>
                     <div className="flex flex-row gap-3">
                         <button 
