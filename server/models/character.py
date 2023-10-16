@@ -1,6 +1,5 @@
 from config import db
 from sqlalchemy_serializer import SerializerMixin
-from sqlalchemy.orm import validates
 
 class Character(db.Model, SerializerMixin):
     __tablename__ = "characters"

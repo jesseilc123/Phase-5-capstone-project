@@ -1,5 +1,6 @@
 from config import db
 from sqlalchemy_serializer import SerializerMixin
+from sqlalchemy.orm import validates
 
 class Reply(db.Model, SerializerMixin):
     __tablename__ = 'replies'
@@ -14,6 +15,12 @@ class Reply(db.Model, SerializerMixin):
 
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     post_id = db.Column(db.Integer, db.ForeignKey("posts.id"), nullable=False)
+
+    @validates("content")
+    def check_content(self, key, content):
+        if (not content):
+            raise ValueError({"message": "Content must exist"})
+        return content
 
     def __repr__(self):
         return f"Reply(id={self.id}, " + \

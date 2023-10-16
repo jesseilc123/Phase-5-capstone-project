@@ -1,70 +1,100 @@
-# Getting Started with Create React App
+# Technical Overview for `/client`
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## components
+**Announcements.js**
 
-## Available Scripts
+This component displays any announcements. The user to collapse the announcements.
 
-In the project directory, you can run:
+**App.js**
 
-### `npm start`
+This component hold's all the routes for the project. It functions as the parent components which holds all other components within the project.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**GuideCard.js**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This component handles the link cards to the different pages are displayed. the `useEffect` sets `currentMap` and `currentImageMap` to null.
 
-### `npm test`
+**IconCard.js**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This component handles how item cards will be displayed in pikmin, characters, maps, enemies, and treasure pages. Function `handleClick` sets state for what item will be displayed.
 
-### `npm run build`
+**LoginForm.js**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This component handles the login feature. Formik is being used for frontend data validation. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Navbar.js**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This component provides a way for users to navigate to the home and login pages. This component is not visible on the login page.
 
-### `npm run eject`
+**PostCard.js**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+This component handles how posts will be displayed. It also handles the feature where users can edit and delete their posts. Functions `rerenderReply`, `editRenderReply`, and `deleteRenderReplies` update state so the page will properly rerender. 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**PostForm.js**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+This component handles the form where users can create posts. Forimk is used for data validation. 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**ReplyCard.js**
 
-## Learn More
+This component handles how replies will be displayed. It also handles the feature where users can edit and delete their replies. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**ReplyForm.js**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This component handles the form where users can add replies to posts. Forimk is used for data validation. 
 
-### Code Splitting
+**Sidebar.js**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+This component provides a quick and convenient way for users to navigate to different pages within the web application. This component is not visible on the login page.
 
-### Analyzing the Bundle Size
+**SignupForm.js**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This component handles the signup feature. Formik is being used for frontend data validation. 
 
-### Making a Progressive Web App
+## context
+**images**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+This folder holds several files which contain a list of key and value objects. These are import into `UserContext.js` giving all components access to these objects. This is necessary in order to display the correct images. 
 
-### Advanced Configuration
+**UserContext.js**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+This file uses `useContext` to give all components access to any of the variable declared inside this file. 
 
-### Deployment
+## pages
+**Characters.js**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+This file fetch's and displays the character's that are in the backend database. Character has no relationship with any other tables in the database. 
 
-### `npm run build` fails to minify
+**Enemies.js**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This file fetch's and displays the enemies's that are in the backend database. A `useEffect` is used to fetch data from `/enemies` and `/maps` once per render. Since enemies belong to a map each enemy has a relationship with a map. The state `currentEnemy` determines what enemy is to be displayed. The function `linkToMaps` allows the user to click on the location of the displayed enemy, and the function will set the states of `CurrentMap` and `CurrentImageMap`. By doing so when the user navigates to maps, the correct corelating map will be displayed. 
+
+**Forums.js**
+
+This file fetch's and displays the posts that are in the backend data base. A `useEffect` is used to fetch data from `/users`, `/replies`, and `/posts`. All three have relationships between each other so it's necessary to get data from all 3. Functions `deleteRenderPost` and `editRenderPost` both make the states update in forums to cause the file to rerender. 
+
+**Home.js**
+
+This file holds links to all other pages within the project. Here the user can see what is available to them. 
+
+**Login.js**
+
+This file contains the `LoginForm` and `SignupForm` components. It allows the user to switch between the two forms.
+
+**Maps.js**
+
+This file fetch's and displays the maps that are in the backend database. Maps have many enemies and many treasures. 
+
+**Pikmin.js**
+
+This file fetch's and displays the pikmin that are in the backend database. Pikmin has no relationship with any other tables in the database. 
+
+**Treasure.js**
+
+This file fetch's and displays the treasure's that are in the backend database. A `useEffect` is used to fetch data from `/treasures` and `/maps` once per render. Since treasures belong to a map each treasure has a relationship with a map. The state `currentTreasure` determines what treasure is to be displayed. The function `linkToMaps` allows the user to click on the location of the displayed treasure, and the function will set the states of `CurrentMap` and `CurrentImageMap`. By doing so when the user navigates to maps, the correct corelating map will be displayed. 
+
+## schemas
+**index.js**
+
+This file has all the schemas used in the project. For form validation I am using Formik and yup. So the schemas used here work best for Formik. `passwordRules` states that the password must be; a minimum of 5 characters, include at least 1 upper case letter, at least 1 lower case letter, and at least 1 numeric digit.
+
+## utils
+This folder containers all the images used in the project.

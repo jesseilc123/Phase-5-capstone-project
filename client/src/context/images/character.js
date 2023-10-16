@@ -8,7 +8,6 @@ const characterIcons = [
     {name: "Dingo", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/character_images/dingo.png")}, 
     {name: "Yonny", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/character_images/yonny.png")}, 
     {name: "Bernard", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/character_images/bernard.png")},
-
     // {name: "Schnauz", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/character_images/schnauz.png")}, 
     // {name: "Dalmo", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/character_images/dalmo.png")}, 
     // {name: "Kingsly", image: require("/home/jesseilc123/development/code/phase-5/Phase-5-capstone-project/client/src/utils/character_images/kingsly.png")}, 

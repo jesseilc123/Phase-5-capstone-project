@@ -47,7 +47,7 @@ function SignupForm() {
     return (
         <div className="flex lg:flex-nowrap flex-wrap justify-center flex-row mt-8 gap-4 mx-12">
             <div className="flex flex-col lg:w-1/2 w-full">
-                <h2 className=" font-bold text-xl justify-center items-center lg:flex hidden mb-1">Sign in with a Social Account</h2>
+                <h2 className=" font-bold text-xl justify-center items-center lg:flex hidden mb-1">Signup with a Social Account</h2>
                 <div className="flex justify-center items-center flex-col gap-4 xl:mt-4 w-full">
                     {social.map((s) => (
                         <button key={s.platform} className={`flex flex-row items-center h-full w-full p-1 rounded-md ${s.color}`}>

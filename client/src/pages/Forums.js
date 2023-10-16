@@ -6,7 +6,7 @@ import PostForm from "../components/PostForm"
 import PostCard from "../components/PostCard";
 
 function Forums() {
-    const { user, postCategories, postForm, setPostForm, posts, setPosts, replies, setReplies, setAllUsers} = useContext(UserContext)
+    const { user, postCategories, postForm, setPostForm, posts, setPosts, setReplies, setAllUsers} = useContext(UserContext)
 
     const [activeCat, setActiveCat] = useState("All")
 
