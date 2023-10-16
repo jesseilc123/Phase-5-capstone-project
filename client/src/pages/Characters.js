@@ -15,7 +15,7 @@ function Characters() {
             .then(data => {
                 setCharacters(data)
             })
-    }, []);
+    }, [setCharacters]);
 
     return (
         <div className="flex h-full w-full bg-beige bg-hero-pattern-2 bg-repeat items-center justify-center ">
@@ -46,7 +46,7 @@ function Characters() {
                                             <span> {currentCharacter.name}</span>
                                         </p>
                                         <p className="text-lg font-semibold ml-1" >
-                                            <span className="bg-beige rounded-xl pb-1 px-2">title:</span> 
+                                            <span className="bg-beige rounded-xl pb-1 px-2">Title:</span> 
                                             <span> {currentCharacter.title}</span>
                                         </p>
                                         <p className="text-lg font-semibold ml-1" >

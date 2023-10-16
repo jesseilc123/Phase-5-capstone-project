@@ -19,7 +19,7 @@ This component handles how item cards will be displayed in pikmin, characters, m
 
 **LoginForm.js**
 
-This component handles the login feature. Formik is being used for frontend data validation. 
+This component handles the login feature. Formik is being used for frontend data validation. Sign in with a social account does not work at the current state. Also there are no Terms of Use or Privacy Policy.
 
 **Navbar.js**
 
@@ -47,7 +47,7 @@ This component provides a quick and convenient way for users to navigate to diff
 
 **SignupForm.js**
 
-This component handles the signup feature. Formik is being used for frontend data validation. 
+This component handles the signup feature. Formik is being used for frontend data validation. Signuo with a social account does not work at the current state. Also there are no Terms of Use or Privacy Policy. Email me about WIKI news and events also does not actually send out an email.
 
 ## context
 **images**

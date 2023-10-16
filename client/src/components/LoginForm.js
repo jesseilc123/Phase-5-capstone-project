@@ -1,4 +1,4 @@
-import React, { useContext, useState} from "react";
+import React, { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import { useFormik } from "formik";
 import { loginSchema } from "../schemas";
@@ -41,11 +41,11 @@ function LoginForm() {
     return (
         <div className="flex lg:flex-nowrap flex-wrap justify-center flex-row mt-8 gap-4 mx-12 ">
             <div className="flex flex-col lg:w-1/2 w-full">
-                <h2 className=" font-bold text-xl justify-center items-center lg:flex hidden mb-1">Sign in with a Social Account</h2>
+                <h2 className=" font-bold text-xl justify-center items-center lg:flex hidden mb-1">Login with a Social Account</h2>
                 <div className="flex justify-center items-center flex-col gap-4 xl:mt-4 w-full">
                     {social.map((s) => (
-                        <button key={s.platform} className={`flex flex-row items-center h-full w-full p-1 rounded-md ${s.color}`}>
-                            <img src={s.image} className="flex justify-start h-7 w-7 p-0.5 m-1 bg-white rounded-sm"/>
+                        <button key={s.platform} className={`flex flex-row items-center h-full w-full p-1 rounded-md ${s.color}`} onClick={() => console.log("feature under development")}>
+                            <img src={s.image} alt={`${s.platform} button`} className="flex justify-start h-7 w-7 p-0.5 m-1 bg-white rounded-sm"/>
                             <div className="flex justify-center text-white text-xs font-semibold">
                                 {s.platform} 
                             </div>
@@ -80,9 +80,9 @@ function LoginForm() {
                     </button>
                     <div className="flex flex-row wrap items-center justify-center">
                         <p className="flex flex-row flex-wrap items-center justify-center">By creating an account, you agree to&nbsp;
-                            <button className="text-light-cyan underline font-bold">Terms of Use</button>
+                            <button className="text-light-cyan underline font-bold" onClick={() => console.log("Placeholder")} type="button">Terms of Use</button>
                             &nbsp;and&nbsp;
-                            <button className="text-light-cyan underline font-bold">Privacy Policy</button>
+                            <button className="text-light-cyan underline font-bold" onClick={() => console.log("Placeholder")} type="button">Privacy Policy</button>
                         </p>
                     </div>
                 </form>

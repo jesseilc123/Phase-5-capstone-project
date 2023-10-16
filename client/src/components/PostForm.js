@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { postSchema } from "../schemas";
 import { UserContext } from "../context/UserContext";
 import { useFormik } from "formik";

@@ -1,13 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 
 function IconCard( { icon, states, setCurrentState, setCurrentImage }) {
     const [search, setSearch] = useState("")
+    const [activeCard, setActiveCard] = useState("")
 
     function handleClick(item){
-        console.log(item)
+        setActiveCard(item.name)
         states.filter(state => {
             if (state.name === item.name) {
-                console.log(state)
                 setCurrentState(state)
                 setCurrentImage(item.image)
             }
@@ -45,11 +45,13 @@ function IconCard( { icon, states, setCurrentState, setCurrentImage }) {
                 }).map((item) => (
                     <button 
                         key={item.name} 
-                        className={`flex flex-col h-[300px] w-[300px] bg-light-cyan items-center justify-center rounded-lg hover:border-n-green hover:border-4 focus:border-n-green focus:border-4 focus:scale-90 border-2`}
+                        className={`flex flex-col h-[300px] w-[300px] bg-light-cyan items-center justify-center rounded-lg hover:border-n-green hover:border-4 ${activeCard === item.name ? "border-n-green border-4 scale-90": ""} border-2`}
                         onClick={() => handleClick(item)}
                     >
                         <img src={item.image} alt={item.name} className="h-48 w-48 rounded-xl bg-white border-2 shadow-md"/>
-                        <p className="flex flex-wrap w-fit font-bold text-2xl mt-4 bg-off-white px-2 pb-0.5 rounded-xl border-2 shadow-md">{item.name}</p>
+                        <p className="flex flex-wrap w-fit break-words max-w-[90%] font-bold text-2xl mt-4 bg-off-white px-2 pb-0.5 rounded-xl border-2 shadow-md">
+                            {item.name}
+                        </p>
                     </button>
                 ))}
             </div>

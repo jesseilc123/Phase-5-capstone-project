@@ -9,7 +9,8 @@ function Home() {
     useEffect(() => {
         setCurrentMap(null)
         setCurrentImageMap(null)
-    }, []);
+        
+    }, [setCurrentMap, setCurrentImageMap]);
 
     return (
         <div className="flex h-full w-full bg-hero-pattern bg-no-repeat bg-grey items-center justify-center">

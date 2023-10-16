@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext} from "react";
+import React, { useEffect, useContext} from "react";
 import { UserContext } from "../context/UserContext";
 import IconCard from "../components/IconCard";
 
@@ -13,7 +13,7 @@ function Maps() {
             .then(data => {
                 setMaps(data)
             })
-    }, []);
+    }, [setMaps]);
 
     return (
         <div className="flex h-full w-full bg-beige bg-hero-pattern-2 bg-repeat items-center justify-center ">

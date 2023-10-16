@@ -50,8 +50,8 @@ function SignupForm() {
                 <h2 className=" font-bold text-xl justify-center items-center lg:flex hidden mb-1">Signup with a Social Account</h2>
                 <div className="flex justify-center items-center flex-col gap-4 xl:mt-4 w-full">
                     {social.map((s) => (
-                        <button key={s.platform} className={`flex flex-row items-center h-full w-full p-1 rounded-md ${s.color}`}>
-                            <img src={s.image} className="flex justify-start h-7 w-7 p-0.5 m-1 bg-white rounded-sm"/>
+                        <button key={s.platform} className={`flex flex-row items-center h-full w-full p-1 rounded-md ${s.color}`} onClick={() => console.log("feature under development")}>
+                            <img src={s.image} alt={`${s.platform} button`}className="flex justify-start h-7 w-7 p-0.5 m-1 bg-white rounded-sm"/>
                             <div className="flex justify-center text-white text-xs font-semibold">
                                 {s.platform} 
                             </div>
@@ -124,8 +124,8 @@ function SignupForm() {
                             <p className="pl-2">I agree to:</p>
                         </label>
                         <div className="flex flex-col list-disc pl-4">
-                            <li ><span className="cursor-pointer text-light-cyan font-semibold">WIKI's Terms of Use</span></li>
-                            <li ><span className="cursor-pointer text-light-cyan font-semibold">Privacy Policy</span></li>
+                            <li ><span className="cursor-pointer text-light-cyan font-semibold" onClick={() => console.log("Placeholder")}>WIKI's Terms of Use</span></li>
+                            <li ><span className="cursor-pointer text-light-cyan font-semibold" onClick={() => console.log("Placeholder")}>Privacy Policy</span></li>
                         </div>
                         {errors.checkbox2 && touched.checkbox2 ? (<p className="text-light-red">{errors.checkbox2}</p>) : (<p className="text-white">.</p>)}
                     </div>

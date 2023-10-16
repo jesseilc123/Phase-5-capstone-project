@@ -6,7 +6,7 @@ import PostForm from "../components/PostForm"
 import PostCard from "../components/PostCard";
 
 function Forums() {
-    const { user, postCategories, postForm, setPostForm, posts, setPosts, setReplies, setAllUsers} = useContext(UserContext)
+    const { user, postCategories, postForm, setPostForm, posts, setPosts, setReplies, setAllUsers, setView} = useContext(UserContext)
 
     const [activeCat, setActiveCat] = useState("All")
 
@@ -29,7 +29,7 @@ function Forums() {
             .then(data => {
                 setPosts(data.reverse())
             })
-    }, []);
+    }, [setAllUsers, setReplies, setPosts]);
 
     function rerenderPost(p) {
         const newlist = [p, ...posts]
@@ -70,7 +70,15 @@ function Forums() {
                         {!user ? (
                             <div>
                                 <div className="bg-off-white rounded-lg border-2 px-2">
-                                    Please <Link to="/login" className="underline font-semibold">Login</Link> to reply or post
+                                    Please&nbsp; 
+                                    <Link 
+                                        to="/login" 
+                                        onClick={() => setView("login")} 
+                                        className="underline font-semibold hover:text-light-blue"
+                                    >
+                                        Login
+                                    </Link> 
+                                    &nbsp;to reply or post
                                 </div>
                             </div>
                             ) : (
@@ -88,8 +96,10 @@ function Forums() {
                     </div>
                     <div className="flex flex-wrap flex-row item-center mb-3 justify-center">
                         {postCategories.map(c => (
-                            <button key={c} className={`flex min-w-fit border-2 p-2  ${activeCat === c ? "bg-light-blue text-off-white" : "bg-light-grey"}`} onClick={() => setActiveCat(c)}>
-                                {c}
+                            <button key={c} className={`flex min-w-fit border-2 p-2 border-black  ${activeCat === c ? "bg-light-blue" : "bg-light-grey"}`} onClick={() => setActiveCat(c)}>
+                                <p className={`${activeCat === c ? "text-off-white" : "text-black"}`}>
+                                    {c}
+                                </p>
                             </button>
                         ))}
                     </div>

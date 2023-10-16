@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import pikminlogo from "../utils/pikminLogo.jpg"
 import { Link, useLocation, useNavigate} from "react-router-dom";
 import { UserContext } from "../context/UserContext";
@@ -7,6 +7,7 @@ function Navbar() {
     const { setView, user, setUser } = useContext(UserContext);
     let location = useLocation();
     let navigate = useNavigate();
+
     function handleLogout() {
         fetch("/logout", { method: "DELETE" })
             .then(r => {

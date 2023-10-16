@@ -6,7 +6,7 @@ function Announcements() {
     return (
         <div className={`flex flex-col bg-off-white border-black p-4 border-2 xl:mt-3 xl:rounded-md rounded-b-sm ${ announceHidden ? "content-none h-14" : "visible h-full"} `}>
             <div className="flex flex-row justify-between">
-                <h2 className="text-xl font-semibold ">
+                <h2 className="text-xl font-semibold">
                     General Announcements 
                 </h2>
                 { announceHidden ? (

@@ -22,7 +22,8 @@ function Treasure() {
             .then(data => {
                 setMaps(data)
             })
-    }, []);
+            
+    }, [setTreasures, setMaps]);
 
     function linkToMaps() {
         const m = maps.filter(map => map.id === currentTreasure.location)

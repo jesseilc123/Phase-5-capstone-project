@@ -23,7 +23,7 @@ function Enemies() {
             .then(data => {
                 setMaps(data)
             })
-    }, []);
+    }, [setEnemies, setMaps]);
 
     function linkToMaps() {
         const m = maps.filter(map => map.id === currentEnemy.location)
